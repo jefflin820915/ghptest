@@ -1,0 +1,7 @@
+uiautomator2>=2.16.0  # Android UI automation testing framework.
+pytest==8.3.5
+pytest-html==4.1.1
+pytest-xdist==3.5.0
+pytest-cov==4.1.0
+Pillow==10.1.0
+numpy==1.24.4

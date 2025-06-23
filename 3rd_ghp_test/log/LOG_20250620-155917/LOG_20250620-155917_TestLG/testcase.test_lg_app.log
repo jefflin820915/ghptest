@@ -1,0 +1,2 @@
+[2025-06-20 15:59:23,027][testcase.test_lg_app][test_lg_app][setup_method][INFO]: Executing setup before test: test_aghp_control
+[2025-06-20 15:59:24,272][testcase.test_lg_app][test_lg_app][teardown_method][INFO]: Executing teardown after test for test_aghp_control

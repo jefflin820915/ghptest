@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="u2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/venv/lib/python3.11/site-packages/uiautomator2/assets/u2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,18 @@
+[2025-06-20 15:59:22,237][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250620-155917/LOG_20250620-155917_Device&Conftest
+[2025-06-20 15:59:23,025][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250620-155917/LOG_20250620-155917_TestLG
+[2025-06-20 15:59:23,029][common.device_base][device_base][start_logging][INFO]: Start the logging
+[2025-06-20 15:59:23,030][common.device_base][device_base][start_logging][INFO]: starting get logcat
+[2025-06-20 15:59:23,030][common.device_base][device_base][start_logging][INFO]: adb logcat > "/Users/enlin/3rd_ghp_test/./log/LOG_20250620-155917/LOG_20250620-155917_TestLG/abd_logcat_20250620-155917.log"
+[2025-06-20 15:59:23,040][common.device_base][device_base][start_logging][INFO]: abd_logcat_20250620-155917.log is logging
+[2025-06-20 15:59:23,041][common.device_base][device_base][start_logging][INFO]: starting get hublog
+[2025-06-20 15:59:23,042][common.device_base][device_base][start_logging][INFO]: curl -k -X GET https://192.168.86.237:8443/setup/get_logs --output "/Users/enlin/3rd_ghp_test/./log/LOG_20250620-155917/LOG_20250620-155917_TestLG/hublog_20250620-155917.log"
+[2025-06-20 15:59:23,048][common.device_base][device_base][start_logging][INFO]: hublog_20250620-155917.log is logging
+[2025-06-20 15:59:23,048][common.device_base][device_base][start_recording][INFO]: Start screen recording for test_aghp_control
+[2025-06-20 15:59:23,049][common.device_base][device_base][start_recording][INFO]: adb shell screenrecord --bugreport /sdcard/20250620-155917_test_aghp_control.mp4
+[2025-06-20 15:59:23,055][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250620-155917/LOG_20250620-155917_Object
+[2025-06-20 15:59:24,274][common.device_base][device_base][stop_recording][INFO]: Stop screen recording
+[2025-06-20 15:59:24,275][common.device_base][device_base][stop_recording][INFO]: Attempting to stop screen recording process with PID 73781
+[2025-06-20 15:59:25,281][common.device_base][device_base][stop_recording][INFO]: adb shell sync
+[2025-06-20 15:59:25,295][common.device_base][device_base][stop_recording][INFO]: Start pulling videos from device, this may take some time...
+[2025-06-20 15:59:25,296][common.device_base][device_base][stop_recording][INFO]: adb pull /sdcard/20250620-155917_test_aghp_control.mp4 /Users/enlin/3rd_ghp_test/./log/LOG_20250620-155917/LOG_20250620-155917_TestLG
+[2025-06-20 15:59:25,302][common.device_base][device_base][stop_recording][INFO]: 20250620-155917_test_aghp_control.mp4 is saved to /Users/enlin/3rd_ghp_test/./log/LOG_20250620-155917/LOG_20250620-155917_TestLG

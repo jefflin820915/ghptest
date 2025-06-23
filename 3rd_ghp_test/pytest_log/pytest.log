@@ -1,0 +1,18 @@
+2025-06-20 16:01:51 core.py:222 [DEBUG]: file u2.jar md5: 3564c56e4ef077f92c0fd32bcb42aea1
+2025-06-20 16:01:51 core.py:211 [DEBUG]: file u2.jar already pushed
+2025-06-20 16:01:51 core.py:90 [DEBUG]: http request GET /ping None
+2025-06-20 16:01:51 core.py:92 [DEBUG]: forward tcp:60542 -> tcp:9008
+2025-06-20 16:01:51 connectionpool.py:246 [DEBUG]: Starting new HTTP connection (1): 127.0.0.1:60542
+2025-06-20 16:01:51 core.py:69 [DEBUG]: launch uiautomator with cmd: CLASSPATH=/data/local/tmp/u2.jar app_process / com.wetest.uia2.Main
+2025-06-20 16:01:51 core.py:90 [DEBUG]: http request GET /ping None
+2025-06-20 16:01:51 core.py:92 [DEBUG]: forward tcp:60542 -> tcp:9008
+2025-06-20 16:01:51 connectionpool.py:246 [DEBUG]: Starting new HTTP connection (1): 127.0.0.1:60542
+2025-06-20 16:01:52 core.py:37 [DEBUG]: MockAdbProcess: b'[server] INFO: [UiAutomator2Server] Starting Server\n'
+2025-06-20 16:01:52 core.py:37 [DEBUG]: MockAdbProcess: b'SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".\nSLF4J: Defaulting to no-operation (NOP) logger implementation\nSLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.\n'
+2025-06-20 16:01:52 core.py:37 [DEBUG]: MockAdbProcess: b'[server] INFO: clipboardManager inited\n'
+2025-06-20 16:01:52 core.py:37 [DEBUG]: MockAdbProcess: b'[server] INFO: tmpdir is /data/local/tmp/u2\n'
+2025-06-20 16:01:52 core.py:37 [DEBUG]: MockAdbProcess: b'[server] INFO: http server listening on *:9008\n'
+2025-06-20 16:01:52 core.py:90 [DEBUG]: http request GET /ping None
+2025-06-20 16:01:52 core.py:92 [DEBUG]: forward tcp:60542 -> tcp:9008
+2025-06-20 16:01:52 connectionpool.py:246 [DEBUG]: Starting new HTTP connection (1): 127.0.0.1:60542
+2025-06-20 16:01:52 connectionpool.py:475 [DEBUG]: http://127.0.0.1:60542 "GET /ping HTTP/1.1" 200 4

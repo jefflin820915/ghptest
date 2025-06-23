@@ -1,0 +1,15 @@
+{
+  "agent_id": "aqara-home-40727",
+  "login_account": "kuruklinnesthub01@gmail.com",
+  "login_password": "@nesthome",
+  "package_name": "com.lumiunited.aqarahome.play",
+  "pin_code": "1234",
+  "personal_profile_id": 0,
+  "test_serial": "1A071FDF600DUW",
+  "devices": {
+    "starter_device": ["Aqara_LOCK"],
+    "starter_device_status": ["Locked"],
+    "action_device": ["Outlet1"],
+    "action_device_status": ["Off"]
+  }
+}

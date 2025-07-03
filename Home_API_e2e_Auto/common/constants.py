@@ -26,6 +26,11 @@ GHA_BOTTOM_CONTAINER_ID= "bottom_container"
 GHA_HALF_SPLIT_RECYCLER_VIEW="half_split_recycler_view"
 GHA_DEVICE_TAB_DEVICE_NAME_ID = "com.google.android.apps.chromecast.app:id/title"
 GHA_DEVICE_TAB_MAIN_VIEW_ID = "com.google.android.apps.chromecast.app:id/main_navigation_pager"
+GHA_PIN_EDIT_TEXT_ID = "com.google.android.apps.chromecast.app:id/pin_edit_text"
+GHA_SAVE_PIN_CODE_CHECKBOX_ID = "com.google.android.apps.chromecast.app:id/alpha_numeric_checkbox"
+GHA_LOCKED_UNLOCKED_BUTTON_ID = r"com\.google\.android\.apps\.chromecast\.app:id/hero_.*"
+
+
 
 # ANDROID
 ANDROID_SETTINGS_PACKAGE = "com.android.settings"
@@ -73,8 +78,6 @@ TUYA_MANAGE_BUTTON_ID = "com.tuya.smart:id/tvManage"
 TUYA_REMOVE_DEVICE_BUTTON_ID = "com.tuya.smart:id/tvRemoveDevices"
 TUYA_CONFIRM_BUTTON_ID = "com.tuya.smart:id/tv_confirm"
 TUYA_DONE_BUTTON_ON_ALL_DEVICE_ID = "com.tuya.smart:id/tv_left_cancel"
-TUYA_LOCKED_UNLOCKED_BUTTON_ID = "com.google.android.apps.chromecast.app:id/hero_button"
-TUYA_PIN_EDIT_TEXT_ID = "com.google.android.apps.chromecast.app:id/pin_edit_text"
 TUYA_OK_BUTTON_ON_PIN_EDIT_ID = "android:id/button1"
 TUYA_HOME_DEVICE_ITEM_CARD_ID = "com.tuya.smart:id/shell_item_card"
 TUYA_HOME_CONTENT_ROOT_ID = "com.tuya.smart:id/content_root"
@@ -150,11 +153,20 @@ RESOURCE_CLASS_GO_BACK_BUTTON_DESCRIPTION = "Go back"
 
 # Android Sample App
 AGHP_PACKAGE = "com.example.googlehomeapisampleapp"
-GHP_VERIFIED_VIEW = "//android.widget.Button[@text='I understand']"
-AGHP_DEVICE_VIEW = "//android.widget.TextView[@text='Home ▾']"
+
+AGHP_HOME_ITEM_ID = "mat-select-0"
+
+GHP_UNVERIFIED_VIEW_TEXT = "This app isn't verified"
+
+UNVERIFIED_VIEW_UNDERSTAND_BUTTON_CLASS_AND_TEXT = "//android.widget.Button[@text='I understand']"
+AGHP_DEVICE_VIEW_CLASS_AND_TEXT = "//android.widget.TextView[@text='Home ▾']"
+AGHP_GHP_SESSION_TITLE_BUTTON_CLASS_AND_TEXT = "//android.widget.TextView[@text='Google Home API Sample App']"
 
 # UIAUTOMATOR
 DIRECTION_UP = "up"
+DIRECTION_DOWN = "down"
+DIRECTION_LEFT = "left"
+DIRECTION_RIGHT = "right"
 KEY_BACK = "back"
 ELEM_GET_TEXT = "text"
 ELEM_GET_INDEX = "index"

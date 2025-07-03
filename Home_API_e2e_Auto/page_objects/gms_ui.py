@@ -6,9 +6,6 @@ import os
 import re
 import time
 from typing import Optional
-
-from wda import Selector
-
 # Local application imports
 from common import constants
 from common import session_data
@@ -410,7 +407,7 @@ class GMSUIPage:
                     self.click_ghp_allow_link_button()
                     return True
                 else:
-                    self.device.swipe_ext("up", 0.7)
+                    self.device.swipe(direction=constants.DIRECTION_UP, steps=7)
                     self.logger.info("Swiping up...")
                     time.sleep(1)
             except uiautomator2.exceptions.RPCError as e:
@@ -436,7 +433,7 @@ class GMSUIPage:
                     self.logger.info("Found GHP cancel link button and clicked.")
                     return True
                 else:
-                    self.device.swipe_ext("up", 0.7)
+                    self.device.swipe(direction=constants.DIRECTION_UP, steps=7)
                     self.logger.info("Swiping up...")
                 time.sleep(1)  # wait for the hierarchy to update
                 second_dump = self.device.dump_hierarchy()
@@ -537,7 +534,7 @@ class GMSUIPage:
                     self.logger.info("Found GHP session device type linked.")
                     return True
                 else:
-                    self.device.swipe_ext("up", 0.7)
+                    self.device.swipe(direction=constants.DIRECTION_UP, steps=7)
                     time.sleep(1)
                     second_dump = self.device.dump_hierarchy()
                     if first_dump == second_dump:
@@ -631,11 +628,13 @@ class GMSUIPage:
         """
         return self.device(className=constants.RESOURCE_CLASS_GMS_WEBKIT_CONTAINER)
 
-    def get_ghp_devices_linked_view_layout_container(self) -> uiautomator2.UiObject:
-        """Get the class webkit container.
+    def get_ghp_devices_linked_view_layout_container(
+            self,
+    ) -> uiautomator2.UiObject:
+        """Get the resource id layout container.
 
         Returns:
-            uiautomator2.UiObject: The class webkit container
+            uiautomator2.UiObject: The resource id layout container
         """
         return self.device(resourceId=constants.RESOURCE_ID_GHP_DEVICES_LINKED_VIEW)
 
@@ -646,7 +645,8 @@ class GMSUIPage:
             uiautomator2.UiObject: The class go back button
         """
         return self.device(
-            className=constants.RESOURCE_CLASS_GO_BACK_BUTTON, description="Go back"
+            className=constants.RESOURCE_CLASS_GO_BACK_BUTTON,
+            description=constants.RESOURCE_CLASS_GO_BACK_BUTTON_DESCRIPTION,
         )
 
     def click_class_go_back_button(self) -> bool:
@@ -679,7 +679,7 @@ class GMSUIPage:
         try:
             first_page = self.device.dump_hierarchy()
             while True:
-                self.device.swipe_ext("down", 0.7)
+                self.device(className=constants.RESOURCE_CLASS_GMS_WEBKIT_CONTAINER).scroll.vert.to(description=constants.RESOURCE_CLASS_GO_BACK_BUTTON_DESCRIPTION)
                 self.logger.info("Swiping down...")
                 time.sleep(1)  # wait for the hierarchy to update
                 second_page = self.device.dump_hierarchy()
@@ -767,15 +767,18 @@ class GMSUIPage:
                 except uiautomator2.exceptions.UiAutomationError as e:
                     self.logger.info(f"Failed to get GMS linked data: {i} ({str(e)})")
                     continue
-
             if self.get_class_webkit_container().wait(timeout=constants.FIVE_SECONDS):
-                self.get_class_webkit_container().swipe("up", steps=0.2)
+                self.get_class_webkit_container().swipe(
+                    constants.DIRECTION_UP, steps=0.2
+                )
                 self.logger.info("Webkit container swiped up")
             else:
-                self.get_ghp_devices_linked_view_layout_container().wait(timeout=constants.FIVE_SECONDS)
-                self.get_ghp_devices_linked_view_layout_container().swipe(constants.DIRECTION_UP)
-                self.logger.info("Layout container Swiping up...")
-
+                self.get_ghp_devices_linked_view_layout_container().wait(
+                    timeout=constants.FIVE_SECONDS
+                )
+                (self.get_ghp_devices_linked_view_layout_container()
+                 .scroll.vert.forward())
+                self.logger.info("Layout container swiped up")
             time.sleep(2)  # wait for the hierarchy to update
             second = self.device.dump_hierarchy()
             if first == second:

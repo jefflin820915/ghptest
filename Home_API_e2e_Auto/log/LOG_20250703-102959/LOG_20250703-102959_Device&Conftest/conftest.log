@@ -1,0 +1,3 @@
+[2025-07-03 10:30:05,071][conftest][conftest][pytest_runtest_logstart][INFO]: 
+Starting to run test case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked (Current times: 1/ Total times: 1)
+[2025-07-03 10:30:05,216][conftest][conftest][device][INFO]: Device connected: 1A071FDF600DUW

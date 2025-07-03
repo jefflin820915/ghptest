@@ -1,0 +1,17 @@
+[2025-06-27 17:51:44,603][page_objects.gha_ui][gha_ui][start_gha][INFO]: Start Google Home App
+[2025-06-27 17:51:45,302][page_objects.gha_ui][gha_ui][start_gha][INFO]: Google Home app launched
+[2025-06-27 17:51:49,411][page_objects.gha_ui][gha_ui][refresh_gha_devices][INFO]: GHA has been refreshed.
+[2025-06-27 17:51:49,847][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display']
+[2025-06-27 17:51:49,847][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01']
+[2025-06-27 17:51:49,847][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01']
+[2025-06-27 17:51:49,847][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01']
+[2025-06-27 17:51:49,847][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01', 'Preswitch01']
+[2025-06-27 17:51:49,847][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01', 'Preswitch01', 'LOCK1']
+[2025-06-27 17:51:53,061][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: current_status: DeviceState.UNLOCKED
+[2025-06-27 17:51:53,062][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: device status differs from automation setting
+[2025-06-27 17:51:53,062][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: current_state: DeviceState.UNLOCKED and automation setting: DeviceState.LOCKED
+[2025-06-27 17:51:53,062][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Toggling the device
+[2025-06-27 17:51:58,178][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: pin_code: 222
+[2025-06-27 17:52:00,629][page_objects.gha_ui][gha_ui][_click_ok_button_on_pin_edit][INFO]: Found OK Button
+[2025-06-27 17:52:10,384][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: if_status_diff: DeviceState.LOCKED
+[2025-06-27 17:52:10,769][page_objects.gha_ui][gha_ui][stop_gha][INFO]: GHA stopped successfully.

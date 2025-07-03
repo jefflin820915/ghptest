@@ -1,4 +1,5 @@
 """Test case for Aqara."""
+
 from common import constants
 from common.device_base import DeviceBasic
 import pytest
@@ -24,6 +25,7 @@ class TestAqaraTestCase:
     def teardown_method(self):
         self._logger.info(f"Executing teardown after test. {self.test_method_name}")
         DeviceBasic.stop_recording(self, self.log_folder_path)
+        DeviceBasic.compress_logcat(self)
 
     def test_aqara_to_ghp_link_allow_process(
             self, aqara_ui, gms_ui, mode=True
@@ -69,6 +71,9 @@ class TestAqaraTestCase:
         gms_ui.click_ghp_session_device_type_linked()
         gms_ui.get_ghp_api_device_linked_data(mode=mode)
         gms_ui.find_ghp_allow_link_button_and_click()
+        if not aqara_ui.check_aqara_home_loading():
+            self._logger.error("Aqara home loading timeout.")
+            assert False
         assert True
 
     def test_aqara_to_ghp_link_cancel_process(self, aqara_ui, gms_ui) -> bool:
@@ -106,9 +111,6 @@ class TestAqaraTestCase:
         gms_ui.find_ghp_session_device_type_linked_button()
         gms_ui.get_ghp_session_device_type_linked_count()
         gms_ui.find_ghp_cancel_link_button_and_click()
-        if not aqara_ui.check_aqara_home_loading():
-            self._logger.error("Aqara home loading timeout.")
-            assert False
         assert True
 
     def test_aqara_remove_all_automation(self, aqara_ui, gms_ui):
@@ -179,7 +181,7 @@ class TestAqaraTestCase:
         aqara_ui.click_create_automation_if_add_button()
         device_starter = self.config_manager.get_starter_device_list()
         device_starter_status = (
-            self.config_manager.get_starter_device_status_list()
+            self.config_manager.get_starter_device_list()
         )
         device_action = self.config_manager.get_action_device_list()
         device_action_status = self.config_manager.get_action_device_status_list()
@@ -201,6 +203,6 @@ class TestAqaraTestCase:
         automation_text = aqara_ui.get_automation_description_text()
         aqara_ui.click_automation_ok_button()
         if not aqara_ui.check_aqara_home_loading(35):
-            self.logger.error("Aqara home create automation loading timeout.")
+            self._logger.error("Aqara home create automation loading timeout.")
             assert False
         assert aqara_ui.check_automation_exist(automation_text)

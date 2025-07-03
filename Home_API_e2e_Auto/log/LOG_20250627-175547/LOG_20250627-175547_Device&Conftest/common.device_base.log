@@ -1,0 +1,24 @@
+[2025-06-27 17:55:52,508][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_Device&Conftest
+[2025-06-27 17:55:52,706][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_TestTuya
+[2025-06-27 17:55:52,707][common.device_base][device_base][start_logging][INFO]: Start the logging
+[2025-06-27 17:55:52,708][common.device_base][device_base][start_logging][INFO]: starting get logcat
+[2025-06-27 17:55:52,708][common.device_base][device_base][start_logging][INFO]: adb logcat > "/Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_TestTuya/abd_logcat_20250627-175547.log"
+[2025-06-27 17:55:52,712][common.device_base][device_base][start_logging][INFO]: abd_logcat_20250627-175547.log is logging
+[2025-06-27 17:55:52,713][common.device_base][device_base][start_logging][INFO]: starting get hublog
+[2025-06-27 17:55:52,713][common.device_base][device_base][start_logging][INFO]: curl -k -X GET https://192.168.86.237:8443/setup/get_logs --output "/Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_TestTuya/hublog_20250627-175547.log"
+[2025-06-27 17:55:52,716][common.device_base][device_base][start_logging][INFO]: hublog_20250627-175547.log is logging
+[2025-06-27 17:55:52,717][common.device_base][device_base][start_recording][INFO]: Start screen recording for test_control_lock_unlocked
+[2025-06-27 17:55:52,718][common.device_base][device_base][start_recording][INFO]: adb shell screenrecord --bugreport /sdcard/20250627-175547_test_control_lock_unlocked.mp4
+[2025-06-27 17:55:52,722][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_Object
+[2025-06-27 17:56:01,993][common.device_base][device_base][get_device_state_on_gha][INFO]: LOCK1 is LOCKED
+[2025-06-27 17:56:16,532][common.device_base][device_base][get_device_state_on_gha][INFO]: LOCK1 is LOCKED
+[2025-06-27 17:56:16,941][common.device_base][device_base][stop_recording][INFO]: Stop screen recording
+[2025-06-27 17:56:16,942][common.device_base][device_base][stop_recording][INFO]: Attempting to stop screen recording process with PID 66276
+[2025-06-27 17:56:17,959][common.device_base][device_base][stop_recording][INFO]: adb shell sync
+[2025-06-27 17:56:17,971][common.device_base][device_base][stop_recording][INFO]: Start pulling videos from device, this may take some time...
+[2025-06-27 17:56:17,976][common.device_base][device_base][stop_recording][INFO]: adb pull /sdcard/20250627-175547_test_control_lock_unlocked.mp4 /Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_TestTuya
+[2025-06-27 17:56:17,998][common.device_base][device_base][stop_recording][INFO]: 20250627-175547_test_control_lock_unlocked.mp4 is saved to /Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_TestTuya
+[2025-06-27 17:56:17,999][common.device_base][device_base][compress_logcat][INFO]: Stopping logcat capture...
+[2025-06-27 17:56:18,001][common.device_base][device_base][compress_logcat][INFO]: Compressing log file to /Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_TestTuya/abd_logcat_20250627-175547.zip...
+[2025-06-27 17:56:18,053][common.device_base][device_base][compress_logcat][INFO]: Log file compressed. Compressed size: 0.52 MB
+[2025-06-27 17:56:18,054][common.device_base][device_base][compress_logcat][INFO]: Original log file deleted: /Users/enlin/3rd_ghp_test/./log/LOG_20250627-175547/LOG_20250627-175547_TestTuya/abd_logcat_20250627-175547.log

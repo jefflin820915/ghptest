@@ -1,2 +1,0 @@
-[2025-06-20 16:01:52,325][testcase.test_aghp_testcase][test_aghp_testcase][setup_method][INFO]: Executing setup before test: test_aghp_control
-[2025-06-20 16:01:53,784][testcase.test_aghp_testcase][test_aghp_testcase][teardown_method][INFO]: Executing teardown after test for test_aghp_control

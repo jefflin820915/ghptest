@@ -112,13 +112,22 @@ class GHAObject:
         """
         return self.device(text=f"{device_name}").click()
 
-    def _long_toggle_device_on_off(self) -> uiautomator2.UiObject:
+    def _long_toggle_lock_device_on_off(self) -> uiautomator2.UiObject:
         """Clicks on a device element by its displayed name to toggle its on/off state.
 
         Returns:
             The result of the click action performed on the device element.
         """
-        return self.device(resourceId=constants.TUYA_LOCKED_UNLOCKED_BUTTON_ID).long_click(constants.ONE_SECONDS, constants.THREE_SECONDS)
+        return self.device(resourceIdMatches=constants.GHA_LOCKED_UNLOCKED_BUTTON_ID).long_click(constants.ONE_SECONDS, constants.THREE_SECONDS)
+
+    def _get_save_pin_code_checkbox(self) -> uiautomator2.UiObject:
+        """get on a device element by its displayed name to save pincode checkbox.
+
+       Returns:
+           The result of the get action performed on the device element.
+       """
+        sleep(constants.ONE_SECONDS)
+        return self.device(resourceId=constants.GHA_SAVE_PIN_CODE_CHECKBOX_ID)
 
     def _set_pin_code(self, pin_code) -> uiautomator2.UiObject:
         """Clicks on a device element by its displayed name to toggle its on/off state.
@@ -126,7 +135,8 @@ class GHAObject:
         Returns:
             The result of the click action performed on the device element.
         """
-        return self.device(resourceId=constants.TUYA_PIN_EDIT_TEXT_ID).set_text(pin_code)
+        sleep(constants.ONE_SECONDS)
+        return self.device(resourceId=constants.GHA_PIN_EDIT_TEXT_ID).set_text(pin_code)
 
     def _click_ok_button_on_pin_edit(self) -> bool:
         """Clicks on a device element by its displayed name to toggle its on/off state.
@@ -393,7 +403,7 @@ class GHAObject:
         self._is_device_exist_device_page(device_name)
         current_status = DeviceBasic.get_device_state_on_gha(self, device_name, gha_ui)
         self._logger.info(f"current_status: {current_status}")
-        if status_from_automation != current_status:
+        if status_from_automation != current_status and current_status != DeviceState.OFFLINE:
             self._logger.info('device status differs from automation setting')
             self.toggle_lock_device(current_status, status_from_automation, device_name, pin_code)
             set_status_diff = DeviceBasic.get_device_state_on_gha(self, device_name, gha_ui)
@@ -417,10 +427,12 @@ class GHAObject:
         self._logger.info(f"current_state: {current_status} and automation setting: {status_from_automation}")
         self._logger.info('Toggling the device')
         self._toggle_device_on_off(device_name)
-        self._long_toggle_device_on_off()
+        self._long_toggle_lock_device_on_off()
         sleep(constants.THREE_SECONDS)
         if pin_code is not None:
             self._logger.info(f"pin_code: {pin_code}")
+            if self._get_save_pin_code_checkbox():
+                self._get_save_pin_code_checkbox().click()
             self._set_pin_code(pin_code)
             self._click_ok_button_on_pin_edit()
         else:

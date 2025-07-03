@@ -1,0 +1,15 @@
+[2025-07-03 10:30:50,680][page_objects.gha_ui][gha_ui][start_gha][INFO]: Start Google Home App
+[2025-07-03 10:30:55,991][page_objects.gha_ui][gha_ui][start_gha][INFO]: Google Home app launched
+[2025-07-03 10:31:00,531][page_objects.gha_ui][gha_ui][refresh_gha_devices][INFO]: GHA has been refreshed.
+[2025-07-03 10:31:00,802][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['NestHubMax45FD']
+[2025-07-03 10:31:00,802][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['NestHubMax45FD', 'Aqara LOCK']
+[2025-07-03 10:31:04,115][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: current_status: DeviceState.LOCKED
+[2025-07-03 10:31:04,115][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: device status sames from automation setting
+[2025-07-03 10:31:04,115][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: current_state: DeviceState.LOCKED and automation setting: DeviceState.LOCKED
+[2025-07-03 10:31:04,116][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Toggling the device
+[2025-07-03 10:31:09,602][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Device not set pin_code
+[2025-07-03 10:31:09,668][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: current_state: DeviceState.LOCKED and automation setting: DeviceState.LOCKED
+[2025-07-03 10:31:09,668][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Toggling the device
+[2025-07-03 10:31:16,171][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Device not set pin_code
+[2025-07-03 10:31:19,414][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: if_status_same: DeviceState.LOCKED
+[2025-07-03 10:31:24,790][page_objects.gha_ui][gha_ui][stop_gha][INFO]: GHA stopped successfully.

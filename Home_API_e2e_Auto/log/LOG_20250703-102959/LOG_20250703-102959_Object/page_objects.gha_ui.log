@@ -1,0 +1,9 @@
+[2025-07-03 10:30:10,467][page_objects.gha_ui][gha_ui][start_gha][INFO]: Start Google Home App
+[2025-07-03 10:30:15,879][page_objects.gha_ui][gha_ui][start_gha][INFO]: Google Home app launched
+[2025-07-03 10:30:19,584][page_objects.gha_ui][gha_ui][refresh_gha_devices][INFO]: GHA has been refreshed.
+[2025-07-03 10:30:19,818][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['NestHubMax45FD']
+[2025-07-03 10:30:19,818][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['NestHubMax45FD', 'Aqara LOCK']
+[2025-07-03 10:30:19,818][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['NestHubMax45FD', 'Aqara LOCK', 'light2']
+[2025-07-03 10:30:22,166][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: swipe end
+[2025-07-03 10:30:24,376][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: swipe end
+[2025-07-03 10:30:26,597][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: swipe end

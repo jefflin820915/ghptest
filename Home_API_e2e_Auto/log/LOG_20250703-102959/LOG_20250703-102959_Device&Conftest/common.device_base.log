@@ -1,0 +1,14 @@
+[2025-07-03 10:30:05,013][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250703-102959/LOG_20250703-102959_Device&Conftest
+[2025-07-03 10:30:05,218][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250703-102959/LOG_20250703-102959_TestTuya
+[2025-07-03 10:30:05,219][common.device_base][device_base][start_logging][INFO]: Start the logging
+[2025-07-03 10:30:05,220][common.device_base][device_base][start_logging][INFO]: starting get logcat
+[2025-07-03 10:30:05,220][common.device_base][device_base][start_logging][INFO]: adb logcat > "/Users/enlin/3rd_ghp_test/./log/LOG_20250703-102959/LOG_20250703-102959_TestTuya/abd_logcat_20250703-102959.log"
+[2025-07-03 10:30:05,223][common.device_base][device_base][start_logging][INFO]: abd_logcat_20250703-102959.log is logging
+[2025-07-03 10:30:05,224][common.device_base][device_base][start_logging][INFO]: starting get hublog
+[2025-07-03 10:30:05,224][common.device_base][device_base][start_logging][INFO]: curl -k -X GET https://192.168.86.237:8443/setup/get_logs --output "/Users/enlin/3rd_ghp_test/./log/LOG_20250703-102959/LOG_20250703-102959_TestTuya/hublog_20250703-102959.log"
+[2025-07-03 10:30:05,226][common.device_base][device_base][start_logging][INFO]: hublog_20250703-102959.log is logging
+[2025-07-03 10:30:05,227][common.device_base][device_base][start_recording][INFO]: Start screen recording for test_control_lock_unlocked
+[2025-07-03 10:30:05,227][common.device_base][device_base][start_recording][INFO]: adb shell screenrecord --bugreport /sdcard/20250703-102959_test_control_lock_unlocked.mp4
+[2025-07-03 10:30:05,233][common.device_base][device_base][create_log_folder][INFO]: Log files will be saved to: /Users/enlin/3rd_ghp_test/./log/LOG_20250703-102959/LOG_20250703-102959_Object
+[2025-07-03 10:30:27,418][common.device_base][device_base][stop_recording][INFO]: Stop screen recording
+[2025-07-03 10:30:27,433][common.device_base][device_base][stop_recording][INFO]: Attempting to stop screen recording process with PID 93335

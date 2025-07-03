@@ -1,0 +1,21 @@
+[2025-06-27 17:53:56,125][page_objects.gha_ui][gha_ui][start_gha][INFO]: Start Google Home App
+[2025-06-27 17:53:58,929][page_objects.gha_ui][gha_ui][start_gha][INFO]: Google Home app launched
+[2025-06-27 17:54:03,666][page_objects.gha_ui][gha_ui][refresh_gha_devices][INFO]: GHA has been refreshed.
+[2025-06-27 17:54:04,065][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display']
+[2025-06-27 17:54:04,065][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01']
+[2025-06-27 17:54:04,065][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01']
+[2025-06-27 17:54:04,065][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01']
+[2025-06-27 17:54:04,066][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01', 'Preswitch01']
+[2025-06-27 17:54:04,066][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01', 'Preswitch01', 'LOCK1']
+[2025-06-27 17:54:07,309][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: current_status: DeviceState.LOCKED
+[2025-06-27 17:54:07,309][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: device status sames from automation setting
+[2025-06-27 17:54:07,309][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: current_state: DeviceState.LOCKED and automation setting: DeviceState.LOCKED
+[2025-06-27 17:54:07,309][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Toggling the device
+[2025-06-27 17:54:12,409][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: pin_code: 222
+[2025-06-27 17:54:14,958][page_objects.gha_ui][gha_ui][_click_ok_button_on_pin_edit][INFO]: Found OK Button
+[2025-06-27 17:54:21,489][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: current_state: DeviceState.LOCKED and automation setting: DeviceState.LOCKED
+[2025-06-27 17:54:21,492][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Toggling the device
+[2025-06-27 17:54:26,703][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: pin_code: 222
+[2025-06-27 17:54:29,271][page_objects.gha_ui][gha_ui][_click_ok_button_on_pin_edit][INFO]: Found OK Button
+[2025-06-27 17:54:39,097][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: if_status_same: DeviceState.LOCKED
+[2025-06-27 17:54:39,446][page_objects.gha_ui][gha_ui][stop_gha][INFO]: GHA stopped successfully.

@@ -56,7 +56,6 @@ def configure_allure_environment(request):
             "OS": os.name,
             "Python version": pytest.__version__,
             "Test Frame": "pytest",
-            # 可以添加更多自定義的環境資訊
         }
         with open(os.path.join(alluredir, "environment.properties"), "w", encoding="utf-8") as f:
             for key, value in environment.items():

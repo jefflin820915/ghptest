@@ -1,0 +1,39 @@
+[2025-07-03 10:30:45,265][conftest][conftest][pytest_runtest_logstart][INFO]: 
+Starting to run test case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked (Current times: 1/ Total times: 1)
+[2025-07-03 10:30:45,383][conftest][conftest][device][INFO]: Device connected: 1A071FDF600DUW
+[2025-07-03 10:31:24,797][conftest][conftest][pytest_runtest_logreport][INFO]: Starting test execution: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked
+[2025-07-03 10:31:24,798][conftest][conftest][pytest_runtest_logreport][INFO]: Test passed: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked
+[2025-07-03 10:31:25,899][conftest][conftest][pytest_terminal_summary][INFO]: 
+============================== Test Execution Summary ==============================
+[2025-07-03 10:31:25,899][conftest][conftest][pytest_terminal_summary][INFO]: ⏱️ Total Execution Time: 40.65 seconds
+[2025-07-03 10:31:25,899][conftest][conftest][pytest_terminal_summary][INFO]: 🚦 Exit Status Code: 0
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 📊 Total Tests: 1, ✅ Passed: 1, ❌ Failed: 0, 💥 Error: 0, ⏭️ Skipped: 0
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 💯 Test Success Rate: 100.00%
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: --------------------------------------------------------------------------------
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 
+============================== Detailed Test Case Results =============================
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 📂 Test Case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]:    ➡️ Stage: SETUP
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]:    ✅ Result: PASSED
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: ------------------------------------------------------------
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 📂 Test Case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]:    ➡️ Stage: TEARDOWN
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]:    ✅ Result: PASSED
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: ------------------------------------------------------------
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 📂 Test Case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]:    ➡️ Stage: CALL
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]:    ✅ Result: PASSED
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: ------------------------------------------------------------
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 
+========================= Setup/Teardown Phase Results =========================
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 📂 Test Case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked, Stage: SETUP, Result: PASSED
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 📂 Test Case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked, Stage: TEARDOWN, Result: PASSED
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: --------------------------------------------------------------------------------
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 
+============================ Test Case Execution Results ===========================
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 📂 Test Case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked, Result: PASSED
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: --------------------------------------------------------------------------------
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: 
+================================= Passed Test Cases ================================
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: ✅ Test Case: testcase/test_tuya_smart_app.py::TestTuya::test_control_lock_unlocked
+[2025-07-03 10:31:25,900][conftest][conftest][pytest_terminal_summary][INFO]: --------------------------------------------------------------------------------

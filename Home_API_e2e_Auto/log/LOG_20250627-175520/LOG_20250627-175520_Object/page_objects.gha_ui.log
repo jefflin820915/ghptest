@@ -1,0 +1,16 @@
+[2025-06-27 17:55:25,900][page_objects.gha_ui][gha_ui][start_gha][INFO]: Start Google Home App
+[2025-06-27 17:55:26,541][page_objects.gha_ui][gha_ui][start_gha][INFO]: Google Home app launched
+[2025-06-27 17:55:30,510][page_objects.gha_ui][gha_ui][refresh_gha_devices][INFO]: GHA has been refreshed.
+[2025-06-27 17:55:30,691][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display']
+[2025-06-27 17:55:30,691][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01']
+[2025-06-27 17:55:30,691][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01']
+[2025-06-27 17:55:30,691][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01']
+[2025-06-27 17:55:30,691][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01', 'Preswitch01']
+[2025-06-27 17:55:30,691][page_objects.gha_ui][gha_ui][_is_device_exist_device_page][INFO]: ['Attic Display', 'Prelight01', 'Pretv01', 'Prethermostat01', 'Preswitch01', 'LOCK1']
+[2025-06-27 17:55:33,961][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: current_status: DeviceState.UNLOCKED
+[2025-06-27 17:55:33,961][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: device status differs from automation setting
+[2025-06-27 17:55:33,961][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: current_state: DeviceState.UNLOCKED and automation setting: DeviceState.LOCKED
+[2025-06-27 17:55:33,961][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Toggling the device
+[2025-06-27 17:55:39,091][page_objects.gha_ui][gha_ui][toggle_lock_device][INFO]: Device not set pin_code
+[2025-06-27 17:55:42,832][page_objects.gha_ui][gha_ui][get_status_and_set_to_presetting][INFO]: if_status_diff: DeviceState.LOCKED
+[2025-06-27 17:55:43,170][page_objects.gha_ui][gha_ui][stop_gha][INFO]: GHA stopped successfully.

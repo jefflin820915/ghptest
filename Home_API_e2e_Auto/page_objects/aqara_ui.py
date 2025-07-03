@@ -247,7 +247,7 @@ class AqaraUIPage:
                 else:
                     self.device(
                         resourceId=constants.RESOURCE_ID_GMS_ACCOUNT_LIST_PICKER
-                    ).swipe("up", 0.7)
+                    ).swipe(constants.DIRECTION_UP, 0.7)
                     self.logger.info("Swiping up...")
                 time.sleep(constants.TWO_SECONDS)  # wait for the hierarchy to update
                 second_dump = self.device.dump_hierarchy()
@@ -1224,440 +1224,440 @@ class AqaraUIPage:
             self.logger.error(f"Failed to get starter device item: {str(e)}")
             return None
 
-def click_starter_device_item(self, device_name: str) -> bool:
-    """Click the starter device item element.
+    def click_starter_device_item(self, device_name: str) -> bool:
+        """Click the starter device item element.
 
-    Args:
-        device_name (str): The name of the device
+        Args:
+            device_name (str): The name of the device
 
-    Returns:
-        bool: True if click successful, False otherwise
-    """
-    try:
-        button = self.get_starter_device_item(device_name)
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            self._click_element(button)
-            self.logger.info(f"Clicked starter device: {device_name}")
-            time.sleep(1)  # App animation
-            return True
-        self.logger.error(f"Failed to click starter device: {device_name}")
-        return False
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_starter_device_item(device_name)
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info(f"Clicked starter device: {device_name}")
+                time.sleep(1)  # App animation
+                return True
+            self.logger.error(f"Failed to click starter device: {device_name}")
+            return False
 
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to click starter device: {str(e)}")
-        return False
-    except RuntimeError as e:
-        self.logger.error(f"Failed to click starter device: {str(e)}")
-        return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to click starter device: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to click starter device: {str(e)}")
+            return False
 
-def get_starter_device_set_status(
-        self, device_status: str
-) -> uiautomator2.UiObject | None:
-    """Get the starter device set status element.
+    def get_starter_device_set_status(
+            self, device_status: str
+    ) -> uiautomator2.UiObject | None:
+        """Get the starter device set status element.
 
-    Args:
-        device_status (str): The status of the device
+        Args:
+            device_status (str): The status of the device
 
-    Returns:
-        uiautomator2.UiObject | None: The starter device set status element if
-        found,
-            None otherwise
-    """
-    try:
-        return self.device(
-            resourceId=constants.RESOURCE_ID_STARTER_DEVICE_SET_STATUS,
-            text=device_status,
-        )
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to get starter device set status: {str(e)}")
-        return None
-    except RuntimeError as e:
-        self.logger.error(f"Failed to get starter device set status: {str(e)}")
-        return None
-
-def click_starter_device_set_status(self, device_status: str) -> bool:
-    """Click the starter device set status element.
-
-    Args:
-        device_status (str): The status of the device
-
-    Returns:
-        bool: True if click successful, False otherwise
-    """
-    try:
-        button = self.get_starter_device_set_status(device_status)
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            self._click_element(button)
-            self.logger.info(
-                f"Set the {device_status} status for the starter device."
+        Returns:
+            uiautomator2.UiObject | None: The starter device set status element if
+            found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_STARTER_DEVICE_SET_STATUS,
+                text=device_status,
             )
-            time.sleep(1)  # App animation
-            return True
-        self.logger.error(
-            f"Failed to set the {device_status} status for the starter device."
-        )
-        return False
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(
-            f"Failed to set the {device_status} status for the starter device:"
-            f" {str(e)}"
-        )
-        return False
-    except RuntimeError as e:
-        self.logger.error(
-            f"Failed to set the {device_status} status for the starter device:"
-            f" {str(e)}"
-        )
-        return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get starter device set status: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get starter device set status: {str(e)}")
+            return None
 
-def get_action_device_item(
-        self, device_name: str
-) -> uiautomator2.UiObject | None:
-    """Get the action device item element.
+    def click_starter_device_set_status(self, device_status: str) -> bool:
+        """Click the starter device set status element.
 
-    Args:
-        device_name (str): The name of the device
+        Args:
+            device_status (str): The status of the device
 
-    Returns:
-        uiautomator2.UiObject | None: The action device item element if found,
-            None otherwise
-    """
-    try:
-        return self.device(
-            resourceId=constants.RESOURCE_ID_ACTION_DEVICE_ITEM, text=device_name
-        )
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to get action device item: {str(e)}")
-        return None
-    except RuntimeError as e:
-        self.logger.error(f"Failed to get action device item: {str(e)}")
-        return None
-
-def click_action_device_item(self, device_name: str) -> bool:
-    """Click the action device item element.
-
-    Args:
-        device_name (str): The name of the device
-
-    Returns:
-        bool: True if click successful, False otherwise
-    """
-    try:
-        button = self.get_action_device_item(device_name)
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            self._click_element(button)
-            self.logger.info(f"Clicked action device: {device_name}")
-            return True
-        self.logger.error(f"Failed to click action device: {device_name}")
-        return False
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to click action device: {str(e)}")
-        return False
-    except RuntimeError as e:
-        self.logger.error(f"Failed to click action device: {str(e)}")
-        return False
-
-def get_action_device_set_status(
-        self, device_status: str
-) -> uiautomator2.UiObject | None:
-    """Get the action device set status element.
-
-    Args:
-        device_status (str): The status of the device
-
-    Returns:
-        uiautomator2.UiObject | None: The action device set status element if
-        found,
-            None otherwise
-    """
-    try:
-        return self.device(
-            resourceId=constants.RESOURCE_ID_ACTION_DEVICE_SET_STATUS,
-            textMatches=f"(?i).*{device_status}.*",
-        )
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to get action device set status: {str(e)}")
-        return None
-    except RuntimeError as e:
-        self.logger.error(f"Failed to get action device set status: {str(e)}")
-        return None
-
-def click_action_device_set_status(self, device_status: str) -> bool:
-    """Click the action device set status element.
-
-    Args:
-        device_status (str): The status of the device
-
-    Returns:
-        bool: True if click successful, False otherwise
-    """
-    try:
-        button = self.get_action_device_set_status(device_status)
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            try:
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_starter_device_set_status(device_status)
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
                 self.logger.info(
-                    f'The "{button.get_text()}" status is detected for the action'
-                    " device."
+                    f"Set the {device_status} status for the starter device."
                 )
-            except uiautomator2.exceptions.RPCError:
-                self.logger.info(
-                    f'Set the "{device_status}" status for the action device.'
-                )
-        self._click_element(button)
-        return True
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(
-            f"Failed to set the {device_status} status for the action device:"
-            f" {str(e)}"
-        )
-        return False
-    except RuntimeError as e:
-        self.logger.error(
-            f"Failed to set the {device_status} status for the action device:"
-            f" {str(e)}"
-        )
-        return False
+                time.sleep(1)  # App animation
+                return True
+            self.logger.error(
+                f"Failed to set the {device_status} status for the starter device."
+            )
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to set the {device_status} status for the starter device:"
+                f" {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to set the {device_status} status for the starter device:"
+                f" {str(e)}"
+            )
+            return False
 
-def check_special_automation_title(self, title: str) -> bool:
-    """Check the automation title element.
+    def get_action_device_item(
+            self, device_name: str
+    ) -> uiautomator2.UiObject | None:
+        """Get the action device item element.
 
-    Args:
-        title (str): The title of the automation
+        Args:
+            device_name (str): The name of the device
 
-    Returns:
-        bool: True if the title is correct, False otherwise
-    """
-    try:
-        button = self.device(
-            resourceId=constants.RESOURCE_ID_TOOLBAR_TITLE, text=title
-        )
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            self.logger.info(f"The {title} is detected.")
-            return True
-        self.logger.error(f"The {title} is not detected.")
-        return False
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to check automation title: {str(e)}")
-        return False
-    except RuntimeError as e:
-        self.logger.error(f"Failed to check automation title: {str(e)}")
-        return False
+        Returns:
+            uiautomator2.UiObject | None: The action device item element if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_ACTION_DEVICE_ITEM, text=device_name
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get action device item: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get action device item: {str(e)}")
+            return None
 
-def get_create_automation_save_button(self) -> uiautomator2.UiObject | None:
-    """Get the create automation save button element.
+    def click_action_device_item(self, device_name: str) -> bool:
+        """Click the action device item element.
 
-    Returns:
-        uiautomator2.UiObject | None: The create automation save button element
-        if found,
-            None otherwise
-    """
-    try:
-        return self.device(
-            resourceId=constants.RESOURCE_ID_CREATE_AUTOMATION_SAVE,
-            text=constants.RESOURCE_ID_CREATE_AUTOMATION_SAVE_TEXT,
-        )
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(
-            f"Failed to get create automation save button: {str(e)}"
-        )
-        return None
-    except RuntimeError as e:
-        self.logger.error(
-            f"Failed to get create automation save button: {str(e)}"
-        )
-        return None
+        Args:
+            device_name (str): The name of the device
 
-def click_create_automation_save_button(self) -> bool:
-    """Click the create automation save button element.
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_action_device_item(device_name)
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info(f"Clicked action device: {device_name}")
+                return True
+            self.logger.error(f"Failed to click action device: {device_name}")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to click action device: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to click action device: {str(e)}")
+            return False
 
-    Returns:
-        bool: True if click successful, False otherwise
-    """
-    try:
-        button = self.get_create_automation_save_button()
-        if button.wait(timeout=constants.FIVE_SECONDS):
+    def get_action_device_set_status(
+            self, device_status: str
+    ) -> uiautomator2.UiObject | None:
+        """Get the action device set status element.
+
+        Args:
+            device_status (str): The status of the device
+
+        Returns:
+            uiautomator2.UiObject | None: The action device set status element if
+            found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_ACTION_DEVICE_SET_STATUS,
+                textMatches=f"(?i).*{device_status}.*",
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get action device set status: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get action device set status: {str(e)}")
+            return None
+
+    def click_action_device_set_status(self, device_status: str) -> bool:
+        """Click the action device set status element.
+
+        Args:
+            device_status (str): The status of the device
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_action_device_set_status(device_status)
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                try:
+                    self.logger.info(
+                        f'The "{button.get_text()}" status is detected for the action'
+                        " device."
+                    )
+                except uiautomator2.exceptions.RPCError:
+                    self.logger.info(
+                        f'Set the "{device_status}" status for the action device.'
+                    )
             self._click_element(button)
-            self.logger.info("Clicked create automation save button.")
             return True
-        self.logger.error("Failed to click create automation save button.")
-        return False
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(
-            f"Failed to click create automation save button: {str(e)}"
-        )
-        return False
-    except RuntimeError as e:
-        self.logger.error(
-            f"Failed to click create automation save button: {str(e)}"
-        )
-        return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to set the {device_status} status for the action device:"
+                f" {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to set the {device_status} status for the action device:"
+                f" {str(e)}"
+            )
+            return False
 
-def get_automation_description_edit_text_element(
-        self,
-) -> uiautomator2.UiObject | None:
-    """Get the automation description edit text element.
+    def check_special_automation_title(self, title: str) -> bool:
+        """Check the automation title element.
 
-    Returns:
-        uiautomator2.UiObject | None: The automation description edit text
-        element if found,
-            None otherwise
-    """
-    try:
-        return self.device(
-            resourceId=constants.RESOURCE_ID_AUTOMATION_DESCRIPTION_EDIT_TEXT
-        )
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(
-            f"Failed to get automation description edit text: {str(e)}"
-        )
-        return None
-    except RuntimeError as e:
-        self.logger.error(
-            f"Failed to get automation description edit text: {str(e)}"
-        )
-        return None
+        Args:
+            title (str): The title of the automation
 
-def get_automation_description_text(self) -> str:
-    """Get the automation description text element.
+        Returns:
+            bool: True if the title is correct, False otherwise
+        """
+        try:
+            button = self.device(
+                resourceId=constants.RESOURCE_ID_TOOLBAR_TITLE, text=title
+            )
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self.logger.info(f"The {title} is detected.")
+                return True
+            self.logger.error(f"The {title} is not detected.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to check automation title: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to check automation title: {str(e)}")
+            return False
 
-    Returns:
-        str: The automation description text element if found, empty string
-        otherwise
-    """
-    try:
-        button = self.get_automation_description_edit_text_element()
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            return button.get_text()
-        self.logger.error("Failed to get automation description text.")
-        return ""
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to get automation description text: {str(e)}")
-        return ""
-    except RuntimeError as e:
-        self.logger.error(f"Failed to get automation description text: {str(e)}")
-        return ""
+    def get_create_automation_save_button(self) -> uiautomator2.UiObject | None:
+        """Get the create automation save button element.
 
-def get_automation_ok_button(self) -> uiautomator2.UiObject | None:
-    """Get the automation ok button element.
+        Returns:
+            uiautomator2.UiObject | None: The create automation save button element
+            if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_CREATE_AUTOMATION_SAVE,
+                text=constants.RESOURCE_ID_CREATE_AUTOMATION_SAVE_TEXT,
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to get create automation save button: {str(e)}"
+            )
+            return None
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to get create automation save button: {str(e)}"
+            )
+            return None
 
-    Returns:
-        uiautomator2.UiObject | None: The automation ok button element if found,
-            None otherwise
-    """
-    try:
-        return self.device(resourceId=constants.RESOURCE_ID_AUTOMATION_OK_BUTTON)
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to get automation ok button: {str(e)}")
-        return None
-    except RuntimeError as e:
-        self.logger.error(f"Failed to get automation ok button: {str(e)}")
-        return None
+    def click_create_automation_save_button(self) -> bool:
+        """Click the create automation save button element.
 
-def click_automation_ok_button(self) -> bool:
-    """Click the automation ok button element.
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_create_automation_save_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked create automation save button.")
+                return True
+            self.logger.error("Failed to click create automation save button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click create automation save button: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click create automation save button: {str(e)}"
+            )
+            return False
 
-    Returns:
-        bool: True if click successful, False otherwise
-    """
-    try:
-        button = self.get_automation_ok_button()
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            self._click_element(button)
-            self.logger.info("Clicked automation ok button.")
-            return True
-        self.logger.error("Failed to click automation ok button.")
-        return False
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to click automation ok button: {str(e)}")
-        return False
-    except RuntimeError as e:
-        self.logger.error(f"Failed to click automation ok button: {str(e)}")
-        return False
+    def get_automation_description_edit_text_element(
+            self,
+    ) -> uiautomator2.UiObject | None:
+        """Get the automation description edit text element.
 
-def get_automation_cancel_button(self) -> uiautomator2.UiObject | None:
-    """Get the automation cancel button element.
+        Returns:
+            uiautomator2.UiObject | None: The automation description edit text
+            element if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_AUTOMATION_DESCRIPTION_EDIT_TEXT
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to get automation description edit text: {str(e)}"
+            )
+            return None
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to get automation description edit text: {str(e)}"
+            )
+            return None
 
-    Returns:
-        uiautomator2.UiObject | None: The automation cancel button element if
-        found,
-            None otherwise
-    """
-    try:
-        return self.device(
-            resourceId=constants.RESOURCE_ID_AUTOMATION_CANCEL_BUTTON
-        )
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to get automation cancel button: {str(e)}")
-        return None
-    except RuntimeError as e:
-        self.logger.error(f"Failed to get automation cancel button: {str(e)}")
-        return None
+    def get_automation_description_text(self) -> str:
+        """Get the automation description text element.
 
-def click_automation_cancel_button(self) -> bool:
-    """Click the automation cancel button element.
+        Returns:
+            str: The automation description text element if found, empty string
+            otherwise
+        """
+        try:
+            button = self.get_automation_description_edit_text_element()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                return button.get_text()
+            self.logger.error("Failed to get automation description text.")
+            return ""
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get automation description text: {str(e)}")
+            return ""
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get automation description text: {str(e)}")
+            return ""
 
-    Returns:
-        bool: True if click successful, False otherwise
-    """
-    try:
-        button = self.get_automation_cancel_button()
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            self._click_element(button)
-            self.logger.info("Clicked automation cancel button.")
-            return True
-        self.logger.error("Failed to click automation cancel button.")
-        return False
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to click automation cancel button: {str(e)}")
-        return False
-    except RuntimeError as e:
-        self.logger.error(f"Failed to click automation cancel button: {str(e)}")
-        return False
+    def get_automation_ok_button(self) -> uiautomator2.UiObject | None:
+        """Get the automation ok button element.
 
-def get_automation_create_automation(
-        self, automation_name: str
-) -> uiautomator2.UiObject | None:
-    """Get the automation create automation element.
+        Returns:
+            uiautomator2.UiObject | None: The automation ok button element if found,
+                None otherwise
+        """
+        try:
+            return self.device(resourceId=constants.RESOURCE_ID_AUTOMATION_OK_BUTTON)
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get automation ok button: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get automation ok button: {str(e)}")
+            return None
 
-    Args:
-        automation_name (str): The name of the automation
+    def click_automation_ok_button(self) -> bool:
+        """Click the automation ok button element.
 
-    Returns:
-        uiautomator2.UiObject | None: The automation create automation element
-        if found,
-            None otherwise
-    """
-    try:
-        return self.device(
-            resourceId=constants.RESOURCE_ID_AUTOMATION_EXIST_AUTOMATION,
-            text=automation_name,
-        )
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to get automation create automation: {str(e)}")
-        return None
-    except RuntimeError as e:
-        self.logger.error(f"Failed to get automation create automation: {str(e)}")
-        return None
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_automation_ok_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked automation ok button.")
+                return True
+            self.logger.error("Failed to click automation ok button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to click automation ok button: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to click automation ok button: {str(e)}")
+            return False
 
-def check_automation_exist(self, automation_name: str) -> bool:
-    """Check the automation exist element.
+    def get_automation_cancel_button(self) -> uiautomator2.UiObject | None:
+        """Get the automation cancel button element.
 
-    Args:
-        automation_name (str): The name of the automation
+        Returns:
+            uiautomator2.UiObject | None: The automation cancel button element if
+            found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_AUTOMATION_CANCEL_BUTTON
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get automation cancel button: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get automation cancel button: {str(e)}")
+            return None
 
-    Returns:
-        bool: True if the automation exist, False otherwise
-    """
-    try:
-        button = self.get_automation_create_automation(automation_name)
-        if button.wait(timeout=constants.FIVE_SECONDS):
-            self.logger.info(f"The \"{automation_name}\" is detected.")
-            return True
-        self.logger.error(f"The \"{automation_name}\" is not detected.")
-        return False
-    except uiautomator2.exceptions.RPCError as e:
-        self.logger.error(f"Failed to check automation exist: {str(e)}")
-        return False
-    except RuntimeError as e:
-        self.logger.error(f"Failed to check automation exist: {str(e)}")
-        return False
+    def click_automation_cancel_button(self) -> bool:
+        """Click the automation cancel button element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_automation_cancel_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked automation cancel button.")
+                return True
+            self.logger.error("Failed to click automation cancel button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to click automation cancel button: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to click automation cancel button: {str(e)}")
+            return False
+
+    def get_automation_create_automation(
+            self, automation_name: str
+    ) -> uiautomator2.UiObject | None:
+        """Get the automation create automation element.
+
+        Args:
+            automation_name (str): The name of the automation
+
+        Returns:
+            uiautomator2.UiObject | None: The automation create automation element
+            if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_AUTOMATION_EXIST_AUTOMATION,
+                text=automation_name,
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get automation create automation: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get automation create automation: {str(e)}")
+            return None
+
+    def check_automation_exist(self, automation_name: str) -> bool:
+        """Check the automation exist element.
+
+        Args:
+            automation_name (str): The name of the automation
+
+        Returns:
+            bool: True if the automation exist, False otherwise
+        """
+        try:
+            button = self.get_automation_create_automation(automation_name)
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self.logger.info(f"The \"{automation_name}\" is detected.")
+                return True
+            self.logger.error(f"The \"{automation_name}\" is not detected.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to check automation exist: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to check automation exist: {str(e)}")
+            return False

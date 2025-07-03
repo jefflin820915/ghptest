@@ -88,10 +88,10 @@ class TestTuya:
                 self._logger.info('Tuya and GHA state not same.')
 
     def test_control_lock_unlocked(self, gha_ui):
-            device_status = DeviceState.LOCKED
-            device_name = "LOCK1"
-            pin_code = "1234"
-            if_status_diff = gha_ui.get_status_and_set_to_presetting(gha_ui, device_name, device_status)
+            automation_status = DeviceState.LOCKED
+            device_name = "Aqara LOCK"
+            pin_code = "222"
+            if_status_diff = gha_ui.get_status_and_set_to_presetting(gha_ui, device_name, automation_status)
             self._logger.info(f"device_status:{if_status_diff} ")
             assert True
             # gha_ui.start_gha()

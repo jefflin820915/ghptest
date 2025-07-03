@@ -1,0 +1,3 @@
+[2025-06-27 17:55:25,562][testcase.test_tuya_smart_app][test_tuya_smart_app][setup_method][INFO]: Executing setup before test: test_control_lock_unlocked
+[2025-06-27 17:55:43,171][testcase.test_tuya_smart_app][test_tuya_smart_app][test_control_lock_unlocked][INFO]: device_status:DeviceState.LOCKED 
+[2025-06-27 17:55:43,174][testcase.test_tuya_smart_app][test_tuya_smart_app][teardown_method][INFO]: Executing teardown after test: test_control_lock_unlocked

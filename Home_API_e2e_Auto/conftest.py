@@ -16,6 +16,7 @@ from typing import Any, Optional
 from webbrowser import Error
 from _pytest.runner import CallInfo
 from common import constants
+from common.constants import DeviceState
 from common.device_base import DeviceBasic
 from page_objects.tuya_ui import TuyaObject
 from page_objects.gha_ui import GHAObject

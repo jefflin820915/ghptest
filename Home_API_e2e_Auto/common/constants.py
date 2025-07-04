@@ -195,3 +195,32 @@ class DeviceState(enum.Enum):
     UNKNOWN = 3
     LOCKED = 4
     UNLOCKED = 5
+
+def device_status_parse(device_status: str) -> DeviceState:
+    """Parse device status from string to enum.
+
+    Args:
+        device_status: Device status string.
+
+    Returns:
+        DeviceState: Device status enum.
+    """
+    try:
+        return DeviceState[device_status.upper()]
+    except KeyError:
+        return DeviceState.UNKNOWN
+
+
+def device_status_format(device_status: DeviceState) -> str:
+    """Parse device status from enum to string.
+
+    Args:
+        device_status: Device status enum.
+
+    Returns:
+        str: Device status string.
+    """
+    try:
+        return device_status.name.lower()
+    except ValueError:
+        return "unknown"

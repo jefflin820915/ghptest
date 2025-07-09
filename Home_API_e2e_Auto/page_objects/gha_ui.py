@@ -179,7 +179,7 @@ class GHAObject:
                     self._logger.info(device_name_list)
                 if device_name == get_all_device_name_text:
                     return True
-            if not temp_text_list :
+            if not temp_text_list:
                 self._logger.info("swipe end")
             self.device(resourceId=f"{constants.GHA_DEVICE_TAB_MAIN_VIEW_ID}").scroll.vert(distance='small')
             time.sleep(1)

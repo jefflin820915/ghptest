@@ -55,7 +55,64 @@ class TestAqaraTestCase:
         if aqara_ui.is_aqara_home_page():
             aqara_ui.click_profile_button()
         aqara_ui.click_dialog_close_button()
-        aqara_ui.click_google_home_automations()
+        if aqara_ui.get_connect_to_ecosystems_button():
+            aqara_ui.click_connect_to_ecosystems_button()
+            aqara_ui.ecosystem_to_google_home_process()
+            aqara_ui.click_automation_management_button()
+        if aqara_ui.check_bind_google_button():
+            aqara_ui.click_bind_google_button()
+        if not aqara_ui.check_aqara_home_loading():
+            self._logger.error("Aqara home loading timeout.")
+            assert False
+        if aqara_ui.get_user_is_logged_in():
+            aqara_ui.click_aqara_ghp_switch_google_home_account_button()
+        elif aqara_ui.is_ghp_logged_in():
+            aqara_ui.click_aqara_ghp_switch_google_home_account_button()
+        aqara_ui.click_gms_google_test_account()
+        gms_ui.wait_ghp_loading()
+        gms_ui.get_ghp_session_structure_name()
+        gms_ui.find_ghp_session_device_type_linked_button()
+        gms_ui.get_ghp_session_device_type_linked_count()
+        gms_ui.click_ghp_session_device_type_linked()
+        gms_ui.get_ghp_api_device_linked_data(mode=mode)
+        gms_ui.find_ghp_allow_link_button_and_click()
+        if not aqara_ui.check_aqara_home_loading():
+            self._logger.error("Aqara home loading timeout.")
+            assert False
+        assert True
+
+    def test_aqara_to_ghp_link_allow_dev_process(
+            self, aqara_ui, gms_ui, mode=True
+    ) -> bool:
+        """Tests the process of linking Aqara Home App to GHP.
+
+        This test function simulates the user-initiated process of linking
+        Aqara Home to Google Home from the Aqara Home App and verifies that
+        the user can successfully select a Google account and allow Aqara Home
+        to access Google Home Platform API permissions.
+
+        Args:
+            aqara_ui: An object representing the Aqara Home App UI interactions.
+            gms_ui: An object representing the Google Mobile Services UI
+              interactions
+            mode (bool, optional): The mode to set the toggle button. If True
+              (boolean), it will enable the GHP API toggle button. If False
+              (boolean), it will disable the GHP API toggle button.
+              (NoneType), it will not set the toggle button.
+
+        Returns:
+            bool: True if the linking and allowing process is successful, False
+            otherwise.
+        """
+        aqara_ui.stop_aqara_app()
+        aqara_ui.start_aqara_app()
+        if aqara_ui.is_aqara_home_page():
+            aqara_ui.click_profile_button()
+        aqara_ui.click_dialog_close_button()
+        if aqara_ui.get_connect_to_ecosystems_button():
+            aqara_ui.click_connect_to_ecosystems_button()
+            aqara_ui.ecosystem_to_google_home_process()
+            aqara_ui.click_automation_management_button()
         if aqara_ui.check_bind_google_button():
             aqara_ui.click_bind_google_button()
         if not aqara_ui.check_aqara_home_loading():
@@ -75,6 +132,7 @@ class TestAqaraTestCase:
             self._logger.error("Aqara home loading timeout.")
             assert False
         assert True
+
 
     def test_aqara_to_ghp_link_cancel_process(self, aqara_ui, gms_ui) -> bool:
         """Test Aqara Home App to GHP USER cancel process.

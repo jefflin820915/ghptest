@@ -30,8 +30,6 @@ GHA_PIN_EDIT_TEXT_ID = "com.google.android.apps.chromecast.app:id/pin_edit_text"
 GHA_SAVE_PIN_CODE_CHECKBOX_ID = "com.google.android.apps.chromecast.app:id/alpha_numeric_checkbox"
 GHA_LOCKED_UNLOCKED_BUTTON_ID = r"com\.google\.android\.apps\.chromecast\.app:id/hero_.*"
 
-
-
 # ANDROID
 ANDROID_SETTINGS_PACKAGE = "com.android.settings"
 ANDROID_WIFI_SETTINGS_PACKAGE = "android.settings.WIFI_SETTINGS"
@@ -138,6 +136,14 @@ RESOURCE_ID_AUTOMATION_DESCRIPTION_EDIT_TEXT = "com.lumiunited.aqarahome.play:id
 RESOURCE_ID_AUTOMATION_OK_BUTTON = "com.lumiunited.aqarahome.play:id/tv_name_confirm"
 RESOURCE_ID_AUTOMATION_CANCEL_BUTTON = "com.lumiunited.aqarahome.play:id/tv_name_cancel"
 RESOURCE_ID_AUTOMATION_EXIST_AUTOMATION = "com.lumiunited.aqarahome.play:id/tv_cell_left"
+RESOURCE_ID_CONNECT_TO_ECOSYSTEMS_BUTTON = "com.lumiunited.aqarahome.play:id/tv_mine_item_title"
+RESOURCE_ID_CONNECT_TO_ECOSYSTEMS_BUTTON_TEXT = "Connect to Ecosystems"
+CLASS_ECOSYSTEM_GOOGLE_HOME_BUTTON = "android.widget.TextView"
+CLASS_ECOSYSTEM_GOOGLE_HOME_BUTTON_TEXT = "Google Home"
+RESOURCE_ID_AUTOMATION_MANAGEMENT_BUTTON = "com.lumiunited.aqarahome.play:id/tv_automation_title"
+RESOURCE_ID_AUTOMATION_MANAGEMENT_LEFT_BUTTON = "com.lumiunited.aqarahome.play:id/layout_title_left"
+RESOURCE_ID_SWITCH_GOOGLE_ACCOUNT_BUTTON = "com.lumiunited.aqarahome.play:id/tv_content"
+RESOURCE_ID_SWITCH_GOOGLE_ACCOUNT_BUTTON_TEXT = "Switch Google Account"
 
 # GMS
 RESOURCE_ID_GMS_ACCOUNT = "com.google.android.gms:id/account_name"
@@ -150,6 +156,8 @@ RESOURCE_ID_GHP_DEVICES_LINKED_VIEW = "com.google.android.gms.optional_home:id/l
 RESOURCE_CLASS_GMS_WEBKIT_CONTAINER = "android.webkit.WebView"
 RESOURCE_CLASS_GO_BACK_BUTTON = "android.widget.Button"
 RESOURCE_CLASS_GO_BACK_BUTTON_DESCRIPTION = "Go back"
+CLASS_403_PAGE = "android.widget.TextView"
+CLASS_403_PAGE_TEXT = "403."
 
 # Android Sample App
 AGHP_PACKAGE = "com.example.googlehomeapisampleapp"

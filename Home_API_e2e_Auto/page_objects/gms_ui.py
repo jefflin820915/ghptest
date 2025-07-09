@@ -679,7 +679,7 @@ class GMSUIPage:
         try:
             first_page = self.device.dump_hierarchy()
             while True:
-                self.device(className=constants.RESOURCE_CLASS_GMS_WEBKIT_CONTAINER).scroll.vert.to(description=constants.RESOURCE_CLASS_GO_BACK_BUTTON_DESCRIPTION)
+                self.device.swipe_ext(constants.DIRECTION_DOWN, scale=0.6)
                 self.logger.info("Swiping down...")
                 time.sleep(1)  # wait for the hierarchy to update
                 second_page = self.device.dump_hierarchy()
@@ -768,8 +768,8 @@ class GMSUIPage:
                     self.logger.info(f"Failed to get GMS linked data: {i} ({str(e)})")
                     continue
             if self.get_class_webkit_container().wait(timeout=constants.FIVE_SECONDS):
-                self.get_class_webkit_container().swipe(
-                    constants.DIRECTION_UP, steps=0.2
+                self.device.swipe(
+                    constants.DIRECTION_UP, scale=0.2
                 )
                 self.logger.info("Webkit container swiped up")
             else:
@@ -836,4 +836,322 @@ class GMSUIPage:
             return False
         except RuntimeError as e:
             self.logger.error(f"Failed to click toggle button: {str(e)}")
+            return False
+
+    def get_403_page(self) -> uiautomator2.UiObject:
+        """Get the 403 page element.
+
+        Returns:
+            uiautomator2.UiObject: The 403 page element
+        """
+        return self.device(className=constants.CLASS_403_PAGE, text=constants.CLASS_403_PAGE_TEXT)
+
+    def check_403_page(self) -> bool:
+        """Check if the 403 page is displayed.
+
+        Returns:
+            bool: True if the 403 page is displayed, False otherwise
+        """
+        try:
+            if self.get_403_page().wait(timeout=constants.FIVE_SECONDS):
+                self.logger.info("403 page displayed.")
+                return True
+            self.logger.info("403 page not displayed.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to check 403 page: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to check 403 page: {str(e)}")
+            return False
+
+    def get_account_content(self) -> uiautomator2.UiObject:
+        """Get the account content element.
+
+        Returns:
+            uiautomator2.UiObject: The account content element
+        """
+        return self.device(resourceId=constants.RESOURCE_ID_ACCOUNT_CONTENT)
+
+    def get_google_email_account(
+            self, account_name: str
+    ) -> uiautomator2.UiObject:
+        """Get the google email account element.
+
+        Args:
+            account_name (str): The account name to get
+
+        Returns:
+            uiautomator2.UiObject: The google email account element
+        """
+        return self.device(className=constants.CLASS_403_PAGE, text=account_name)
+
+    def click_google_email_account(self, account_name: str) -> bool:
+        """Click the google email account element.
+
+        Args:
+            account_name (str): The account name to click
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            account = self.get_google_email_account(account_name)
+            if account.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(account)
+            self.logger.error(f"Failed to click Google {account_name} account.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click Google {account_name} account: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click Google {account_name} account: {str(e)}"
+            )
+            return False
+
+    def go_to_google_connections(self) -> bool:
+        """Go to Google Account Connections.
+
+        Returns:
+            bool: True if go to Google Account Connections successful, False
+            otherwise
+        """
+        try:
+            self.device.open_url(constants.GOOGLE_ACCOUNT_CONNECTIONS_URL)
+            self.logger.info("Opened Google Account Connections.")
+            return True
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to open Google Account Connections: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to open Google Account Connections: {str(e)}")
+            return False
+
+    def get_google_account_contrainer(self) -> uiautomator2.UiObject:
+        """Get the google account contrainer element.
+
+        Returns:
+            uiautomator2.UiObject: The google account contrainer element
+        """
+        return self.device(resourceId=constants.RESOURCE_ID_ACCOUNT_CONTAINER)
+
+    def swipe_google_account_container(
+            self, direction: str = "up", steps: int = 4
+    ) -> bool:
+        """Swipe the google account container element.
+
+        Args:
+            direction (str): The direction to swipe. Defaults to "up".
+            steps (int): The steps to swipe. Defaults to 4.
+
+        Returns:
+            bool: True if swipe successful, False otherwise
+        """
+        try:
+            contrainer = self.get_google_account_contrainer()
+            if contrainer.wait(timeout=constants.FIVE_SECONDS):
+                contrainer.swipe(direction, steps)
+                self.logger.info("Swiped Google account container.")
+                return True
+            self.logger.error("Failed to swipe Google account container.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to swipe Google account container: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to swipe Google account container: {str(e)}")
+            return False
+
+    def get_google_account_flag(self) -> uiautomator2.UiObject:
+        """Get the google account flag element.
+
+        Returns:
+            uiautomator2.UiObject: The google account flag element
+        """
+        return self.device(resourceId=constants.RESOURCE_ID_GOOGLE_ACCOUNT_FLAG)
+
+    def login_account(self, account_name: str) -> bool:
+        """Login the account process.
+
+        Args:
+            account_name (str): The account name to login
+
+        Returns:
+            bool: True if login successful, False otherwise
+        """
+        try:
+            if self.get_google_account_flag().wait(timeout=constants.FIVE_SECONDS):
+                self.logger.info("Google account flag found.")
+                return True
+            first_dump = self.device.dump_hierarchy()
+            while True:
+                if self.get_google_email_account(account_name).wait(
+                        timeout=constants.FIVE_SECONDS
+                ):
+                    self.click_google_email_account(account_name)
+                    return True
+                self.swipe_google_account_container()
+                time.sleep(0.5)
+                second_dump = self.device.dump_hierarchy()
+                time.sleep(1)
+                if first_dump == second_dump:
+                    self.logger.info(f"Account {account_name} not found.")
+                    return False
+                first_dump = second_dump
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to login account: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to login account: {str(e)}")
+            return False
+
+    def get_search_by_name(self) -> uiautomator2.UiObject:
+        """Get the search by name element.
+
+        Returns:
+            uiautomator2.UiObject: The search by name element
+        """
+        return self.device(resourceId=constants.RESOURCE_ID_SEARCH_BY_NAME)
+
+    def search_connections(self, service_name: str) -> bool:
+        """Search the connections element.
+
+        Args:
+            service_name (str): The service name to search
+
+        Returns:
+            bool: True if search successful, False otherwise
+        """
+        try:
+            search = self.get_search_by_name()
+            if search.wait(timeout=constants.FIVE_SECONDS):
+                search.clear_text()
+                search.set_text(service_name)
+                self.device.press(constants.KEY_BACK)
+                self.logger.info(f"Searched {service_name}.")
+            return True
+            self.logger.error(f"Failed to search {service_name}.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to search {service_name}: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to search {service_name}: {str(e)}")
+            return False
+
+    def get_connections_service(self, service_name: str) -> uiautomator2.UiObject:
+        """Get the connections service element.
+
+        Args:
+            service_name (str): The service name to get
+
+        Returns:
+            uiautomator2.UiObject: The connections service element
+        """
+        return self.device(
+            className=constants.CLASS_NAME_TEXT_VIEW, text=service_name
+        )
+
+    def click_connections_service(self, service_name: str) -> bool:
+        """Click the connections service element.
+
+        Args:
+            service_name (str): The service name to click
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            service = self.get_connections_service(service_name)
+            if service.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(service)
+                self.logger.info(f"Clicked {service_name}.")
+                return True
+            self.logger.error(f"No {service_name} found.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to click {service_name}: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to click {service_name}: {str(e)}")
+            return False
+
+    def get_delete_all_connections(
+            self, service_name: str
+    ) -> uiautomator2.UiObject:
+        """Get the delete all connections element.
+
+        Args:
+            service_name (str): The service name to get
+
+        Returns:
+            uiautomator2.UiObject: The delete all connections element
+        """
+        return self.device(
+            className=constants.CLASS_NAME_BUTTON, textMatches=f".*{service_name}.*"
+        )
+
+    def click_delete_all_connections(self, service_name: str) -> bool:
+        """Click the delete all connections element.
+
+        Args:
+            service_name (str): The service name to click
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            delete_all_connections = self.get_delete_all_connections(service_name)
+            if delete_all_connections.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(delete_all_connections)
+                self.logger.info(f"Clicked delete all connections for {service_name}.")
+                return True
+            self.logger.error(
+                f"Failed to click delete all connections for {service_name}."
+            )
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click delete all connections for {service_name}: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click delete all connections for {service_name}: {str(e)}"
+            )
+            return False
+
+    def get_delete_connections_confirm(self) -> uiautomator2.UiObject:
+        """Get the delete connections confirm element.
+
+        Returns:
+            uiautomator2.UiObject: The delete connections confirm element
+        """
+        return self.device(
+            className=constants.CLASS_DELETE_CONNECTIONS_CONFIRM_BUTTON,
+            text=constants.DELETE_CONNECTIONS_CONFIRM_TEXT,
+        )
+
+    def click_delete_connections_confirm(self) -> bool:
+        """Click the delete connections confirm element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            delete_connections_confirm = self.get_delete_connections_confirm()
+            if delete_connections_confirm.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(delete_connections_confirm)
+                self.logger.info("Clicked delete connections confirm.")
+                return True
+            self.logger.error("Failed to click delete connections confirm.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to click delete connections confirm: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to click delete connections confirm: {str(e)}")
             return False

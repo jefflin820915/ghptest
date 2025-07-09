@@ -360,6 +360,396 @@ class AqaraUIPage:
             self.logger.error(f"Failed to check automation page: {str(e)}")
             return False
 
+    def get_aqara_connect_to_ecosystems_button(
+            self,
+    ) -> uiautomator2.UiObject | None:
+        """Get the aqara connect to ecosystems button element.
+
+        Returns:
+            uiautomator2.UiObject | None: The aqara connect to ecosystems button
+            element if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_CONNECT_TO_ECOSYSTEMS_BUTTON,
+                text=constants.RESOURCE_ID_CONNECT_TO_ECOSYSTEMS_BUTTON_TEXT,
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to get aqara connect to ecosystems button: {str(e)}"
+            )
+            return None
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to get aqara connect to ecosystems button: {str(e)}"
+            )
+            return None
+
+    def click_aqara_connect_to_ecosystems_button(self) -> bool:
+        """Click the aqara connect to ecosystems button element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_aqara_connect_to_ecosystems_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked aqara connect to ecosystems button.")
+                return True
+            self.logger.error("Failed to click aqara connect to ecosystems button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click aqara connect to ecosystems button: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click aqara connect to ecosystems button: {str(e)}"
+            )
+            return False
+
+    def get_ecosystem_google_home_button(self) -> uiautomator2.UiObject | None:
+        """Get the ecosystem google home button element.
+
+        Returns:
+            uiautomator2.UiObject | None: The ecosystem google home button element
+            if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                className=constants.CLASS_ECOSYSTEM_GOOGLE_HOME_BUTTON,
+                text=constants.CLASS_ECOSYSTEM_GOOGLE_HOME_BUTTON_TEXT,
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get ecosystem google home button: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get ecosystem google home button: {str(e)}")
+            return None
+
+    def click_ecosystem_google_home_button(self) -> bool:
+        """Click the ecosystem google home button element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_ecosystem_google_home_button()
+            if button.wait(timeout=constants.TEN_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked ecosystem google home button.")
+                return True
+            self.logger.error("Failed to click ecosystem google home button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click ecosystem google home button: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click ecosystem google home button: {str(e)}"
+            )
+            return False
+
+    def get_automation_management_button(self) -> uiautomator2.UiObject | None:
+        """Get the automation management button element.
+
+        Returns:
+            uiautomator2.UiObject | None: The automation management button element
+            if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_AUTOMATION_MANAGEMENT_BUTTON
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get automation management button: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get automation management button: {str(e)}")
+            return None
+
+    def click_automation_management_button(self) -> bool:
+        """Click the automation management button element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_automation_management_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked automation management button.")
+                return True
+            self.logger.error("Failed to click automation management button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click automation management button: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click automation management button: {str(e)}"
+            )
+            return False
+
+    def get_bind_google_account_button(self) -> uiautomator2.UiObject | None:
+        """Get the bind google account button element.
+
+        Returns:
+            uiautomator2.UiObject | None: The bind google account button element if
+            found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_AQARA_BIND_GOOGLE_BUTTON
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get bind google account button: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get bind google account button: {str(e)}")
+            return None
+
+    def click_bind_google_account_button(self) -> bool:
+        """Click the bind google account button element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_bind_google_account_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked bind google account button.")
+                return True
+            self.logger.error("Failed to click bind google account button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to click bind google account button: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to click bind google account button: {str(e)}")
+            return False
+
+    def get_connect_to_ecosystems_button(self) -> uiautomator2.UiObject | None:
+        """Get the connect to ecosystems button element.
+
+        Returns:
+            uiautomator2.UiObject | None: The connect to ecosystems button element
+            if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_CONNECT_TO_ECOSYSTEMS_BUTTON,
+                text=constants.RESOURCE_ID_CONNECT_TO_ECOSYSTEMS_BUTTON_TEXT,
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get connect to ecosystems button: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get connect to ecosystems button: {str(e)}")
+            return None
+
+    def click_connect_to_ecosystems_button(self) -> bool:
+        """Click the connect to ecosystems button element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_connect_to_ecosystems_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked connect to ecosystems button.")
+                return True
+            self.logger.error("Failed to click connect to ecosystems button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click connect to ecosystems button: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click connect to ecosystems button: {str(e)}"
+            )
+            return False
+
+    def get_automation_management_left_button(
+            self,
+    ) -> uiautomator2.UiObject | None:
+        """Get the automation management left button element.
+
+        Returns:
+            uiautomator2.UiObject | None: The automation management left button
+            element if found,
+                None otherwise
+        """
+        try:
+            return self.device(
+                resourceId=constants.RESOURCE_ID_AUTOMATION_MANAGEMENT_LEFT_BUTTON
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to get automation management left button: {str(e)}"
+            )
+            return None
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to get automation management left button: {str(e)}"
+            )
+            return None
+
+    def click_automation_management_left_button(self) -> bool:
+        """Click the automation management left button element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_automation_management_left_button()
+            if button.wait(timeout=constants.TEN_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked automation management left button.")
+                return True
+            self.logger.error("Failed to click automation management left button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click automation management left button: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click automation management left button: {str(e)}"
+            )
+            return False
+
+    def check_ecosystem_google_home_button(self) -> bool:
+        """Check the ecosystem google home button element.
+
+        Returns:
+            bool: True if the ecosystem google home button element is found, False
+            otherwise
+        """
+        try:
+            button = self.get_ecosystem_google_home_button().wait(
+                timeout=constants.TEN_SECONDS
+            )
+            if button:
+                self.logger.info("Found ecosystem google home button.")
+                return True
+            self.logger.error("Failed to find ecosystem google home button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to check ecosystem google home button: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to check ecosystem google home button: {str(e)}"
+            )
+            return False
+
+    def ecosystem_to_google_home_process(self) -> bool:
+        """The ecosystem to google home process."""
+        try:
+            while True:
+                if self.check_ecosystem_google_home_button():
+                    self.logger.info("The Aqara Server is ready.")
+                    self.click_ecosystem_google_home_button()
+                    break
+                else:
+                    self.logger.info(
+                        "The Aqara Server is not ready, back to the previous page."
+                    )
+                    self.click_automation_management_left_button()
+                    self.click_connect_to_ecosystems_button()
+                self.logger.info("Retry the ecosystem to google home process.")
+                time.sleep(1)
+            return True
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to ecosystem to google home process: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to ecosystem to google home process: {str(e)}")
+            return False
+
+    def get_switch_google_account_button(self) -> uiautomator2.UiObject | None:
+        """Get the switch google account button element.
+
+        Returns:
+            uiautomator2.UiObject | None: The switch google account button element
+            if found,
+            None otherwise
+        """
+        try:
+            return self._get_resource_id_element(
+                constants.RESOURCE_ID_SWITCH_GOOGLE_ACCOUNT_BUTTON
+            )
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get switch google account button: {str(e)}")
+            return None
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get switch google account button: {str(e)}")
+            return None
+
+    def click_switch_google_account_button(self) -> bool:
+        """Click the switch google account button element.
+
+        Returns:
+            bool: True if click successful, False otherwise
+        """
+        try:
+            button = self.get_switch_google_account_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self._click_element(button)
+                self.logger.info("Clicked switch google account button.")
+                return True
+            self.logger.error("Failed to click switch google account button.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(
+                f"Failed to click switch google account button: {str(e)}"
+            )
+            return False
+        except RuntimeError as e:
+            self.logger.error(
+                f"Failed to click switch google account button: {str(e)}"
+            )
+            return False
+
+    def get_user_is_logged_in(self) -> bool:
+        """Get the user is logged in element.
+
+        Returns:
+            bool: True if the user is logged in, False otherwise
+        """
+        try:
+            button = self.get_switch_google_account_button()
+            if button.wait(timeout=constants.FIVE_SECONDS):
+                self.logger.info("The user is logged in.")
+                return True
+            self.logger.info("The user is not logged in.")
+            return False
+        except uiautomator2.exceptions.RPCError as e:
+            self.logger.error(f"Failed to get user is logged in: {str(e)}")
+            return False
+        except RuntimeError as e:
+            self.logger.error(f"Failed to get user is logged in: {str(e)}")
+            return False
+
     def get_add_exist_automation_button(self) -> uiautomator2.UiObject | None:
         """Get the add button element.
 
@@ -988,12 +1378,19 @@ class AqaraUIPage:
           found.
         """
         try:
-            count = 0
-            for i in self.get_create_automation_content().child():
-                if i.info["text"] == "Add":
-                    if count == index:
-                        return i
-                    count += 1
+            button = self.get_create_automation_content()
+            if button.wait(timeout=constants.TEN_SECONDS):
+                self.logger.info("Create automation content found.")
+                count = 0
+                for i in button.child():
+                    if i.info["text"] == "Add":
+                        if count == index:
+                            self.logger.info(f"Add button found at index {index}.")
+                            return i
+                        count += 1
+                self.logger.error("Add button not found, as expected.")
+                return None
+            self.logger.error("Create automation content not found, as expected.")
             return None
         except uiautomator2.exceptions.RPCError as e:
             self.logger.error(f"Failed to get create automation if element: {str(e)}")
@@ -1286,7 +1683,7 @@ class AqaraUIPage:
         """
         try:
             button = self.get_starter_device_set_status(device_status)
-            if button.wait(timeout=constants.FIVE_SECONDS):
+            if button.wait(timeout=constants.TEN_SECONDS):
                 self._click_element(button)
                 self.logger.info(
                     f"Set the {device_status} status for the starter device."
@@ -1344,7 +1741,7 @@ class AqaraUIPage:
         """
         try:
             button = self.get_action_device_item(device_name)
-            if button.wait(timeout=constants.FIVE_SECONDS):
+            if button.wait(timeout=constants.TEN_SECONDS):
                 self._click_element(button)
                 self.logger.info(f"Clicked action device: {device_name}")
                 return True
@@ -1393,7 +1790,7 @@ class AqaraUIPage:
         """
         try:
             button = self.get_action_device_set_status(device_status)
-            if button.wait(timeout=constants.FIVE_SECONDS):
+            if button.wait(timeout=constants.TEN_SECONDS):
                 try:
                     self.logger.info(
                         f'The "{button.get_text()}" status is detected for the action'
@@ -1431,7 +1828,7 @@ class AqaraUIPage:
             button = self.device(
                 resourceId=constants.RESOURCE_ID_TOOLBAR_TITLE, text=title
             )
-            if button.wait(timeout=constants.FIVE_SECONDS):
+            if button.wait(timeout=constants.TEN_SECONDS):
                 self.logger.info(f"The {title} is detected.")
                 return True
             self.logger.error(f"The {title} is not detected.")
@@ -1475,7 +1872,7 @@ class AqaraUIPage:
         """
         try:
             button = self.get_create_automation_save_button()
-            if button.wait(timeout=constants.FIVE_SECONDS):
+            if button.wait(timeout=constants.TEN_SECONDS):
                 self._click_element(button)
                 self.logger.info("Clicked create automation save button.")
                 return True

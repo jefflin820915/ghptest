@@ -1,0 +1,17 @@
+{
+  "default names": ["tapo light", "nanoleaf light", "xiaomi light"],
+  "rename name": [
+    "Lamp",
+    "Sink light",
+    "Party Lamp",
+    "Reading light"
+  ],
+  "rooms": [
+    "Bed room",
+    "Living room",
+    "Kitchen",
+    "Upstairs",
+    "Front Yard",
+    "Attic"
+  ]
+}

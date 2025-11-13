@@ -3,18 +3,21 @@ import pytest
 from common.constants import DeviceState
 from common.device_base import DeviceBasic
 from common import constants
-from conftest import gha_ui, device
+from conftest import gha_ui,device
 from utils import logging_utils
 from utils import config_manager
 from time import sleep
 
 @pytest.mark.usefixtures('device')
 class TestTuya:
+    _repetition_count = 0 # Class-level counter for test repetitions
 
     def setup_method(self, method):
+        TestTuya._repetition_count += 1
         self.test_method_name = method.__name__
-        self.log_folder_path = DeviceBasic.create_log_folder(__class__.__name__)
-        self._logger = logging_utils.get_logger(__name__, self.log_folder_path)
+        unique_folder_suffix = f"run{TestTuya._repetition_count}"
+        self.log_folder_path = DeviceBasic.create_log_folder(f"{self.test_method_name}_{unique_folder_suffix}")
+        self._logger = logging_utils.get_logger(f"{__name__}_{unique_folder_suffix}", self.log_folder_path)
         self._logger.info(f"Executing setup before test: {self.test_method_name}")
         self.config_manager = config_manager.ConfigManager()
         self.config_manager.load_config("tuya-smart.json")
@@ -24,6 +27,7 @@ class TestTuya:
     def teardown_method(self):
         self._logger.info(f"Executing teardown after test: {self.test_method_name}")
         DeviceBasic.stop_recording(self, self.log_folder_path)
+        DeviceBasic.stop_logging(self)
         DeviceBasic.compress_logcat(self)
 
     def test_control_on_off(self, tuya_ui, gha_ui):
@@ -88,10 +92,13 @@ class TestTuya:
                 self._logger.info('Tuya and GHA state not same.')
 
     def test_control_lock_unlocked(self, gha_ui):
-            automation_status = DeviceState.LOCKED
-            device_name = "Aqara LOCK"
+            automation_status = DeviceState.RUNNING
+            device_name = "Tapo Light"
+            room_name = "Dining Room"
             pin_code = "222"
-            if_status_diff = gha_ui.get_status_and_set_to_presetting(gha_ui, device_name, automation_status)
+            #if_status_diff = gha_ui.get_device_status_in_detail(gha_ui, device_name)
+            if_status_diff = gha_ui.change_room(gha_ui, room_name, device_name)
+            #if_status_diff = gha_ui.device_rename(device_name)
             self._logger.info(f"device_status:{if_status_diff} ")
             assert True
             # gha_ui.start_gha()

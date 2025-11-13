@@ -1,5 +1,6 @@
 import enum
 import time
+import datetime
 
 # GMS
 GMS_PACKAGE = "com.google.android.gms"
@@ -29,6 +30,13 @@ GHA_DEVICE_TAB_MAIN_VIEW_ID = "com.google.android.apps.chromecast.app:id/main_na
 GHA_PIN_EDIT_TEXT_ID = "com.google.android.apps.chromecast.app:id/pin_edit_text"
 GHA_SAVE_PIN_CODE_CHECKBOX_ID = "com.google.android.apps.chromecast.app:id/alpha_numeric_checkbox"
 GHA_LOCKED_UNLOCKED_BUTTON_ID = r"com\.google\.android\.apps\.chromecast\.app:id/hero_.*"
+
+GHA_DEVICE_SETTING_BUTTON_ID = "com.google.android.apps.chromecast.app:id/settings_button"
+GHA_ROOM_NAME_ID = "com.google.android.apps.chromecast.app:id/line1"
+GHA_ROOM_PAGE_NEXT_BUTTON_ID = "com.google.android.apps.chromecast.app:id/primary_button"
+GHA_UPDATE_DEVICE_NAME_TEXT_EDIT_ID = "com.google.android.apps.chromecast.app:id/settings_placement_device_name_edit_text"
+GHA_RENAME_DEVICE_PAGE_ID = "com.google.android.apps.chromecast.app:id/edit_text"
+GHA_GENERIC_BUTTON_ID = "com.google.android.apps.chromecast.app:id/generic_controller_overflow_button"
 
 # ANDROID
 ANDROID_SETTINGS_PACKAGE = "com.android.settings"
@@ -194,15 +202,20 @@ THIRTY_SECONDS = 30
 SIXTY_SECONDS = 60
 THREE_MINUTES = 180
 FIVE_MINUTES = 5 * 60
-TIMESTAMP = time.strftime("%Y%m%d-%H%M%S")
+TIMESTAMP = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")
 
 class DeviceState(enum.Enum):
-    OFFLINE = 0
-    OFF = 1
-    ON = 2
-    UNKNOWN = 3
-    LOCKED = 4
-    UNLOCKED = 5
+    OFFLINE = "Offline"
+    OFF = "Off"
+    ON = "On"
+    UNKNOWN = "Unknown"
+    LOCKED = "Locked"
+    UNLOCKED = "Unlocked"
+    RUNNING = "Running"
+    STOPPED = "Stopped"
+    PAUSED = "Paused"
+    OPEN = "Open"
+    CLOSED = "Closed"
 
 def device_status_parse(device_status: str) -> DeviceState:
     """Parse device status from string to enum.

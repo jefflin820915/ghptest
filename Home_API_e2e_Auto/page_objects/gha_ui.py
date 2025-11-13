@@ -1,5 +1,6 @@
 """Page object for handling GHA UI automation."""
 import time
+from resource import struct_rusage
 from time import sleep
 from typing import Any, Optional
 
@@ -93,6 +94,63 @@ class GHAObject:
         """
         return self._get_device_tab_on_gha()
 
+    def navigate_to_device_tab_on_gha_new(self) -> UiObject:
+
+        return self.device(description="All devices")
+
+    def _get_device_page_setting_btn(self) -> UiObject:
+
+        return self.device(resourceId=constants.GHA_DEVICE_SETTING_BUTTON_ID)
+
+    def _get_room_page_next_btn(self) -> UiObject:
+
+        return self.device(resourceId=constants.GHA_ROOM_PAGE_NEXT_BUTTON_ID)
+
+    def _get_room_item_on_device_detail_page(self) -> UiObject:
+        sleep(constants.ONE_SECONDS)
+        return self.device(text="Room")
+
+    def _get_name_item_on_device_detail_page(self) -> UiObject:
+        sleep(constants.ONE_SECONDS)
+        return self.device(text="Name")
+
+    def _get_update_device_name_edit_view(self) -> UiObject:
+        return self.device(resourceId=constants.GHA_UPDATE_DEVICE_NAME_TEXT_EDIT_ID)
+
+    def _get_device_rename_edit_view(self) -> UiObject:
+        sleep(constants.THREE_SECONDS)
+        return self.device(resourceId=constants.GHA_RENAME_DEVICE_PAGE_ID)
+
+    def _get_generic_btn(self) -> UiObject:
+        return self.device(resourceId=constants.GHA_GENERIC_BUTTON_ID)
+
+    def _is_room_exist_room_page(self, room_name: str) -> bool:
+        self._get_room_name().wait()
+        device_name_list = []
+        while True:
+            get_device_list_name = self._get_room_name().all()
+            temp_text_list = []
+            for get_all_device_name in get_device_list_name:
+                get_all_device_name_text = get_all_device_name.elem.get(f"{constants.ELEM_GET_TEXT}")
+                if get_all_device_name_text not in device_name_list:
+                    device_name_list.append(get_all_device_name_text)
+                    temp_text_list.append(get_all_device_name_text)
+                    self._logger.info(device_name_list)
+                if room_name == get_all_device_name_text:
+                    return True
+            if not temp_text_list:
+                self._logger.info("swipe end")
+            self.device(resourceId=f"com.google.android.apps.chromecast.app:id/fragment_container").scroll.vert(steps=100)
+            time.sleep(1)
+
+    def _get_room_name(self) -> XPathSelector:
+        """Constructs an XPath selector to locate the device name within a device tab.
+
+        Returns:
+            An XPathSelector object for the device name element.
+        """
+        return self.device.xpath(f"{constants.GHA_ROOM_NAME_ID}")
+
     def _get_device_tab_device_name(self) -> XPathSelector:
         """Constructs an XPath selector to locate the device name within a device tab.
 
@@ -110,7 +168,7 @@ class GHAObject:
         Returns:
             The result of the click action performed on the device element.
         """
-        return self.device(text=f"{device_name}").click()
+        return self.device(text=f"{device_name}").long_click(constants.ONE_SECONDS, constants.THREE_SECONDS)
 
     def _long_toggle_lock_device_on_off(self) -> uiautomator2.UiObject:
         """Clicks on a device element by its displayed name to toggle its on/off state.
@@ -397,12 +455,7 @@ class GHAObject:
         Returns:
             Any: The final status of the device after all operations are complete.
         """
-        self.start_gha()
-        self.navigate_to_device_tab_on_gha().click()
-        self.refresh_gha_devices()
-        self._is_device_exist_device_page(device_name)
-        current_status = DeviceBasic.get_device_state_on_gha(self, device_name, gha_ui)
-        self._logger.info(f"current_status: {current_status}")
+        current_status = self.get_device_status(gha_ui, device_name)
         if status_from_automation != current_status and current_status != DeviceState.OFFLINE:
             self._logger.info('device status differs from automation setting')
             self.toggle_lock_device(current_status, status_from_automation, device_name, pin_code)
@@ -439,3 +492,61 @@ class GHAObject:
             self._logger.info(f"Device not set pin_code")
             self.device.press(f"{constants.KEY_BACK}")
     sleep(constants.FIVE_SECONDS)
+
+    def get_device_status(self, gha_ui: Any, device_name: str) -> Any:
+        self.start_gha()
+        self.navigate_to_device_tab_on_gha().click()
+        self.refresh_gha_devices()
+        self._is_device_exist_device_page(device_name)
+        current_status = DeviceBasic.get_device_state_on_gha(self, device_name, gha_ui)
+        self._logger.info(f"current_status: {current_status}")
+        return current_status
+
+    def get_device_status_in_detail(self, gha_ui: Any, device_name: str) -> Any:
+        self.start_gha()
+        self.navigate_to_device_tab_on_gha().click()
+        self.refresh_gha_devices()
+        self._is_device_exist_device_page(device_name)
+        self._toggle_device_on_off(device_name)
+        sleep(constants.THREE_SECONDS)
+        current_status = DeviceBasic.get_device_state_on_gha(self, device_name, gha_ui)
+        self._logger.info(f"current_status: {current_status}")
+
+    def change_room(self, gha_ui: Any, room_name: str, device_name: str, device_rename: Optional[str] = None) -> Any:
+        self.start_gha()
+        self.navigate_to_device_tab_on_gha_new().click()
+        self.refresh_gha_devices()
+        self._is_device_exist_device_page(device_name)
+        self._toggle_device_on_off(device_name)
+        sleep(constants.THREE_SECONDS)
+        if not self._get_device_page_setting_btn():
+            self._get_generic_btn().click()
+        else:
+            self._get_device_page_setting_btn().click()
+        self._get_room_item_on_device_detail_page().click()
+        self._is_room_exist_room_page(room_name)
+        self._toggle_device_on_off(room_name)
+        self._get_room_page_next_btn().click()
+        if not device_rename:
+            self._get_room_page_next_btn().click()
+        else:
+            self._get_update_device_name_edit_view().set_text("Lamp")
+        self._get_room_page_next_btn().click()
+
+
+    def device_rename(self, device_name: str) -> Any:
+        self.start_gha()
+        self.navigate_to_device_tab_on_gha_new().click()
+        self.refresh_gha_devices()
+        self._is_device_exist_device_page(device_name)
+        self._toggle_device_on_off(device_name)
+        sleep(constants.THREE_SECONDS)
+        if not self._get_device_page_setting_btn():
+            self._get_generic_btn().click()
+        else:
+            self._get_device_page_setting_btn().click()
+        self._get_name_item_on_device_detail_page().click()
+        self._is_device_exist_device_page(device_name)
+        self._toggle_device_on_off(device_name)
+        self._get_device_rename_edit_view().set_text("Lamp")
+

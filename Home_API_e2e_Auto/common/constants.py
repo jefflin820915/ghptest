@@ -9,6 +9,7 @@ GMS_FEEDBACK_TEXT_EDIT_ID = "text_input_edit_text"
 
 # GHA
 GHA_PACKAGE = "com.google.android.apps.chromecast.app"
+GHA_PROGRESS_SPINNER = "progress_spinner"
 GHA_FEEDBACK_CATEGORY_LIST = ["Nest Hub", "Google Home app"]
 GHA_DEVICE_TAB_ID = "com.google.android.apps.chromecast.app:id/bottom_navigation_bar_devices_item"
 GHA_NAVIGATION_FRAME_ID = "main_navigation_pager"
@@ -203,6 +204,7 @@ SIXTY_SECONDS = 60
 THREE_MINUTES = 180
 FIVE_MINUTES = 5 * 60
 TIMESTAMP = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+MAX_WAIT_TIME = 5.0
 
 class DeviceState(enum.Enum):
     OFFLINE = "Offline"

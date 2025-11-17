@@ -5,7 +5,6 @@ import uiautomator2
 from typing import Optional, Set, Any
 from time import sleep
 
-from ui_automator.ui_automator import UIAutomator
 from uiautomator2.xpath import XPathSelector
 from common import timout
 from common import constants

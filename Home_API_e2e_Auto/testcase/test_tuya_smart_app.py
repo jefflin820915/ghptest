@@ -31,142 +31,133 @@ class TestTuya:
         DeviceBasic.compress_logcat(self)
 
     def test_control_on_off(self, tuya_ui, gha_ui):
-            self._logger.info('--------- Toggling the device on GHA -----------')
-            tuya_ui.start_tuya()
-            tuya_ui._is_device_exist_home_page(self.config_manager.get_starter_device_list()[0])
-            tuya_ui._click_home_tab_device_name(self.config_manager.get_starter_device_list()[0]).click()
-            # Get the device status ON/OFF/OFFLINE
-            self._logger.info('Checking the status of the device')
-            current_tuya_states_control_gha = tuya_ui.get_device_state_on_tuya()
-            self._logger.info(f"tuya_state: {current_tuya_states_control_gha}")
-            tuya_ui.stop_tuya()
-            gha_ui.start_gha()
-            gha_ui.navigate_to_device_tab_on_gha().click()
-            gha_ui.refresh_gha_devices()
-            gha_ui._is_device_exist_device_page(self.config_manager.get_starter_device_list()[0])
-            # Get the device status ON/OFF/OFFLINE
-            self._logger.info('Checking the status of the device')
-            current_gha_state_control_on_gha = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[0], gha_ui)
-            self._logger.info(f"current_gha_state: {current_gha_state_control_on_gha}")
-            if current_tuya_states_control_gha == current_gha_state_control_on_gha:
-                self._logger.info('Tuya and GHA state are same.')
-            else:
-                self._logger.info('Tuya and GHA state not same.')
+        self._logger.info('--------- Toggling the device on GHA -----------')
+        tuya_ui.start_tuya()
+        tuya_ui._is_device_exist_home_page(self.config_manager.get_starter_device_list()[0])
+        tuya_ui._click_home_tab_device_name(self.config_manager.get_starter_device_list()[0]).click()
+        # Get the device status ON/OFF/OFFLINE
+        self._logger.info('Checking the status of the device')
+        current_tuya_states_control_gha = tuya_ui.get_device_state_on_tuya()
+        self._logger.info(f"tuya_state: {current_tuya_states_control_gha}")
+        tuya_ui.stop_tuya()
+        gha_ui.start_gha()
+        gha_ui.navigate_to_device_tab_on_gha().click()
+        gha_ui.refresh_gha_devices()
+        gha_ui._is_device_exist_device_page(self.config_manager.get_starter_device_list()[0])
+        # Get the device status ON/OFF/OFFLINE
+        self._logger.info('Checking the status of the device')
+        current_gha_state_control_on_gha = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[0], gha_ui)
+        self._logger.info(f"current_gha_state: {current_gha_state_control_on_gha}")
+        if current_tuya_states_control_gha == current_gha_state_control_on_gha:
+            self._logger.info('Tuya and GHA state are same.')
+        else:
+            self._logger.info('Tuya and GHA state not same.')
 
-            self._logger.info('Toggling the device')
-            gha_ui._toggle_device_on_off(self.config_manager.get_starter_device_list()[0])
-            sleep(5)
-            next_gha_state_control_on_gha = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list[0], gha_ui)
-            self._logger.info(f"next_gha_state: {next_gha_state_control_on_gha}")
-            gha_ui.stop_gha()
-            tuya_ui.start_tuya()
-            tuya_ui._is_device_exist_home_page(self.config_manager.get_starter_device_list()[0])
-            tuya_ui._click_home_tab_device_name(self.config_manager.get_starter_device_list()[0]).click()
-            sleep(3)
-            next_tuya_states_control_on_gha = tuya_ui.get_device_state_on_tuya()
-            self._logger.info(f"next_tuya_state: {next_tuya_states_control_on_gha}")
+        self._logger.info('Toggling the device')
+        gha_ui._toggle_device_on_off(self.config_manager.get_starter_device_list()[0])
+        sleep(5)
+        next_gha_state_control_on_gha = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list[0], gha_ui)
+        self._logger.info(f"next_gha_state: {next_gha_state_control_on_gha}")
+        gha_ui.stop_gha()
+        tuya_ui.start_tuya()
+        tuya_ui._is_device_exist_home_page(self.config_manager.get_starter_device_list()[0])
+        tuya_ui._click_home_tab_device_name(self.config_manager.get_starter_device_list()[0]).click()
+        sleep(3)
+        next_tuya_states_control_on_gha = tuya_ui.get_device_state_on_tuya()
+        self._logger.info(f"next_tuya_state: {next_tuya_states_control_on_gha}")
 
-            if next_gha_state_control_on_gha == next_tuya_states_control_on_gha:
-                self._logger.info('Tuya and GHA state are same.')
-            else:
-                self._logger.info('Tuya and GHA state not same.')
+        if next_gha_state_control_on_gha == next_tuya_states_control_on_gha:
+            self._logger.info('Tuya and GHA state are same.')
+        else:
+            self._logger.info('Tuya and GHA state not same.')
 
-            self._logger.info('Toggling the device on Tuya')
+        self._logger.info('Toggling the device on Tuya')
 
-            self._logger.info('--------- Toggling the device on Tuya -----------')
-            tuya_ui.toggle_device_on_off()
-            current_tuya_states_control_on_tuya = tuya_ui.get_device_state_on_tuya()
-            self._logger.info(f"current_tuya_state: {current_tuya_states_control_on_tuya}")
-            tuya_ui.stop_tuya()
-            gha_ui.start_gha()
-            gha_ui.navigate_to_device_tab_on_gha().click()
-            gha_ui.refresh_gha_devices()
-            gha_ui._is_device_exist_device_page(self.config_manager.get_starter_device_list()[0])
-            # Get the device status ON/OFF/OFFLINE
-            self._logger.info('Checking the status of the device')
-            current_gha_state_control_on_tuya = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[0], gha_ui)
-            self._logger.info(f"current_gha_state: {current_gha_state_control_on_tuya}")
-            if current_tuya_states_control_on_tuya == current_gha_state_control_on_tuya:
-                self._logger.info('Tuya and GHA state are same.')
-            else:
-                self._logger.info('Tuya and GHA state not same.')
+        self._logger.info('--------- Toggling the device on Tuya -----------')
+        tuya_ui.toggle_device_on_off()
+        current_tuya_states_control_on_tuya = tuya_ui.get_device_state_on_tuya()
+        self._logger.info(f"current_tuya_state: {current_tuya_states_control_on_tuya}")
+        tuya_ui.stop_tuya()
+        gha_ui.start_gha()
+        gha_ui.navigate_to_device_tab_on_gha().click()
+        gha_ui.refresh_gha_devices()
+        gha_ui._is_device_exist_device_page(self.config_manager.get_starter_device_list()[0])
+        # Get the device status ON/OFF/OFFLINE
+        self._logger.info('Checking the status of the device')
+        current_gha_state_control_on_tuya = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[0], gha_ui)
+        self._logger.info(f"current_gha_state: {current_gha_state_control_on_tuya}")
+        if current_tuya_states_control_on_tuya == current_gha_state_control_on_tuya:
+            self._logger.info('Tuya and GHA state are same.')
+        else:
+            self._logger.info('Tuya and GHA state not same.')
 
     def test_control_lock_unlocked(self, gha_ui):
-            automation_status = DeviceState.RUNNING
-            device_name = "Tapo Light"
-            room_name = "Dining Room"
-            pin_code = "222"
-            #if_status_diff = gha_ui.get_device_status_in_detail(gha_ui, device_name)
-            if_status_diff = gha_ui.change_room(gha_ui, room_name, device_name)
-            #if_status_diff = gha_ui.device_rename(device_name)
-            self._logger.info(f"device_status:{if_status_diff} ")
+        gha_ui.start_gha()
+        gha_ui.navigate_to_device_tab_on_gha().click()
+        gha_ui.refresh_gha_devices()
+        gha_ui._is_device_exist_device_page(self.config_manager.get_starter_device_list()[1])
+        # Get the device status ON/OFF/OFFLINE
+        self._logger.info('Checking the status of the device')
+        current_state = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[1], gha_ui)
+        self._logger.info(f"current_state: {current_state}")
+        if current_state == DeviceState.UNKNOWN:
+            self._logger.info('Device is at the unknown state.')
+            assert False
+        elif current_state == DeviceState.OFFLINE:
+            self._logger.info('Device is offline.')
+            assert False
+        try:
+            self._logger.info('Toggling the device')
+            gha_ui._toggle_device_on_off(self.config_manager.get_starter_device_list()[1])
+            gha_ui._long_toggle_device_on_off()
+            self._logger.info(self.config_manager.get_pin_code())
+            gha_ui._set_pin_code(self.config_manager.get_pin_code())
+            gha_ui._click_ok_button_on_pin_edit()
+        except Exception as e:
+            self._logger.info('Failed to control device due to ' + repr(e).split('Exception: ')[1].split('\\n')[0])
+        
+        # Get the device status ON/OFF/OFFLINE and Check
+        self._logger.info('Checking the status of the device')
+        next_state = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[1], gha_ui)
+        self._logger.info(f"next_state: {next_state}")
+        if next_state == DeviceState.UNKNOWN:
+            self._logger.info('Device is at the unknown state.')
+            assert False
+        elif next_state == DeviceState.OFFLINE:
+            self._logger.info('Device is offline.')
+            assert False
+        elif current_state == next_state:
+            self._logger.info('Device does not change.')
+            assert False
+        
+        self._logger.info('Toggling the device')
+        try:
+            gha_ui._toggle_device_on_off(self.config_manager.get_starter_device_list()[1])
+            gha_ui._long_toggle_device_on_off()
+            self._logger.info(self.config_manager.get_pin_code())
+            gha_ui._set_pin_code(self.config_manager.get_pin_code())
+            gha_ui._click_ok_button_on_pin_edit()
+        except Exception as e:
+            self._logger.info('Failed to control device due to ' + repr(e).split('Exception: ')[1].split('\\n')[0])
+        
+        # Get the device status ON/OFF/OFFLINE and Check
+        self._logger.info('Checking the status of the device')
+        the_time_after_next_state = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[1], gha_ui)
+        self._logger.info(f"the_time_after_next_state: {the_time_after_next_state}")
+        if the_time_after_next_state == DeviceState.UNKNOWN:
+            self._logger.info('Device is at the unknown state.')
+            assert False
+        elif the_time_after_next_state == DeviceState.OFFLINE:
+            self._logger.info('Device is offline.')
+            assert False
+        elif the_time_after_next_state == next_state:
+            self._logger.info('Device does not change.')
+            assert False
+        else:
+            self._logger.info('Controlling test has Passed')
+            self._logger.info('PASS')
+            gha_ui.stop_gha()
             assert True
-            # gha_ui.start_gha()
-            # gha_ui.navigate_to_device_tab_on_gha().click()
-            # gha_ui.refresh_gha_devices()
-            # gha_ui._is_device_exist_device_page(self.config_manager.get_starter_device_list()[1])
-            # # Get the device status ON/OFF/OFFLINE
-            # self._logger.info('Checking the status of the device')
-            # current_state = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[1], gha_ui)
-            # self._logger.info(f"current_state: {current_state}")
-            # if current_state == DeviceState.UNKNOWN:
-            #     self._logger.info('Device is at the unknown state.')
-            #     assert False
-            # elif current_state == DeviceState.OFFLINE:
-            #     self._logger.info('Device is offline.')
-            #     assert False
-            # try:
-            #     self._logger.info('Toggling the device')
-            #     gha_ui._toggle_device_on_off(self.config_manager.get_starter_device_list()[1])
-            #     gha_ui._long_toggle_device_on_off()
-            #     self._logger.info(self.config_manager.get_pin_code())
-            #     gha_ui._set_pin_code(self.config_manager.get_pin_code())
-            #     gha_ui._click_ok_button_on_pin_edit()
-            # except Exception as e:
-            #     self._logger.info('Failed to control device due to ' + repr(e).split('Exception: ')[1].split('\\n')[0])
-            #
-            # # Get the device status ON/OFF/OFFLINE and Check
-            # self._logger.info('Checking the status of the device')
-            # next_state = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[1], gha_ui)
-            # self._logger.info(f"next_state: {next_state}")
-            # if next_state == DeviceState.UNKNOWN:
-            #     self._logger.info('Device is at the unknown state.')
-            #     assert False
-            # elif next_state == DeviceState.OFFLINE:
-            #     self._logger.info('Device is offline.')
-            #     assert False
-            # elif current_state == next_state:
-            #     self._logger.info('Device does not change.')
-            #     assert False
-            #
-            # self._logger.info('Toggling the device')
-            # try:
-            #     gha_ui._toggle_device_on_off(self.config_manager.get_starter_device_list()[1])
-            #     gha_ui._long_toggle_device_on_off()
-            #     self._logger.info(self.config_manager.get_pin_code())
-            #     gha_ui._set_pin_code(self.config_manager.get_pin_code())
-            #     gha_ui._click_ok_button_on_pin_edit()
-            # except Exception as e:
-            #     self._logger.info('Failed to control device due to ' + repr(e).split('Exception: ')[1].split('\\n')[0])
-            #
-            # # Get the device status ON/OFF/OFFLINE and Check
-            # self._logger.info('Checking the status of the device')
-            # the_time_after_next_state = DeviceBasic.get_device_state_on_gha(self, self.config_manager.get_starter_device_list()[1], gha_ui)
-            # self._logger.info(f"the_time_after_next_state: {the_time_after_next_state}")
-            # if the_time_after_next_state == DeviceState.UNKNOWN:
-            #     self._logger.info('Device is at the unknown state.')
-            #     assert False
-            # elif the_time_after_next_state == DeviceState.OFFLINE:
-            #     self._logger.info('Device is offline.')
-            #     assert False
-            # elif the_time_after_next_state == next_state:
-            #     self._logger.info('Device does not change.')
-            #     assert False
-            # else:
-            #     self._logger.info('Controlling test has Passed')
-            #     self._logger.info('PASS')
-            #     gha_ui.stop_gha()
-            #     assert True
 
     def test_tuya_to_ghp_link_allow_process(self, tuya_ui, gms_ui) -> bool:
         tuya_ui.stop_tuya()
@@ -241,4 +232,22 @@ class TestTuya:
         gms_ui.click_ghp_session_device_type_linked()
         gms_ui.get_ghp_api_device_linked_data()
         tuya_ui._get_allow_btn().click()
+        assert True
+
+    def test_control_device_change_room(self, gha_ui):
+        automation_status = DeviceState.RUNNING
+        device_name = "Tapo Light"
+        device_rename = "Lamp"
+        target_room = "Dining Room"  
+
+        if_status_diff = gha_ui._change_room(gha_ui, target_room, device_name, device_rename)
+        # self._logger.info(f"device_status: {if_status_diff} ")
+        assert True
+
+    def test_control_device_rename(self, gha_ui):
+        current_device_name = "Tapo Light"
+        device_rename = "Sink Light"
+
+        if_status_diff = gha_ui._rename_device(gha_ui, current_device_name, device_rename)
+        # self._logger.info(f"device_status: {if_status_diff} ")
         assert True
